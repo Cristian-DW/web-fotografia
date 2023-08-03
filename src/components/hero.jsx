@@ -7,7 +7,7 @@ import React from "react";
 
 function Hero() {
   return (
-    <div className="flex  justify-center h-screen bg-fondo2">
+    <div className="flex  justify-center h-screen bg-fondo">
       <div>
         <h1>Desarrollador Frontend</h1>
         <h2> title</h2>

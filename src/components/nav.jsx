@@ -1,31 +1,76 @@
-import React from "react";
-import Logo from "../media/logo.svg"
-import Red1 from "../media/bxl-gmail.svg"
-import Red2 from "../media/bxl-linkedin.svg"
-import Red3 from "../media/bxl-github.svg"
+import React, { useState } from 'react';
+import Logo from '../media/logo.svg'
+import Red1 from '../media/bxl-linkedin.svg'
+import Red2 from '../media/bxl-github.svg'
+import Red3 from '../media/bxl-gmail.svg'
 
 
+const Nav = () => {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-function Nav() {
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const mobileMenuClasses = isMobileMenuOpen ? "block" : "hidden";
+
+  const menuButtonClasses = "relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white";
+
 
   return (
-    <div className="flex justify-around items-center bg-purple-400"  >
-      <div>
-        <a href="/"><img src={Logo} alt="logo" /></a>
-      </div>
-      <div className="flex gap-x-4 text-white  ">
-        <a href="#about">Conóceme</a>
-        <a href="#Education">Educación</a>
-        <a href="#project">Porfolio</a>
-        <a href="#contact">Contáctame</a>
-      </div>
-      <div className="flex justify-between  ">
-        <a href="mailto:cristtiiank@gmail.com"> <img className="red1" src={Red1} alt="gmail"/></a>
-        <a href="https://www.linkedin.com/in/cristian-castro-pineda"> <img className="red2" src={Red2} alt="linkedln"/></a>
-        <a href="https://github.com/Cristian-DW"> <img className="red3" src={Red3} alt="gitHub"/></a>
-      </div>
-    </div>
+    <>
+      <nav className="bg-fondo2 fixed top-0 left-0 w-full ">
+        <div className="mx-auto max-w-8xl px-2 md:px-10 lg:px-36 ">
+          <div className="relative flex h-16 items-center justify-between">
+            <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
+              {/* Mobile menu button */}
+              <button type="button" className={menuButtonClasses} onClick={toggleMobileMenu} aria-controls="mobile-menu" aria-expanded={isMobileMenuOpen}>
+                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex flex-1 items-center justify-end  md:items-stretch md:justify-between">
+              <div className="flex flex-shrink-0 items-center  space-x-4 text-gray-300 md: mr-20">
+                <a href='/'> <img className="h-12 w-auto" src={Logo} alt="logo" /> </a>
+                <a href="#" className=" py-2 font-nav font-medium hidden md:block">Cristian Castro</a>
+              </div>
+              <div className="hidden md:ml-6 md:block">
+                <div className="flex space-x-8 text-gray-300" >
+                  <a href="#" className=" rounded-md  py-2 font-nav font-medium">Conoceme</a>
+                  <a href="#" className="    py-2 font-nav font-medium">Habilidades</a>
+                  <a href="#" className=" px-3 py-2 font-nav font-medium">Educación</a>
+                  <a href="#" className="   py-2 font-nav font-medium">Proyectos</a>
+                  <a href="#" className="   py-2 font-nav font-medium">Contáctame</a>
+
+                </div>
+              </div>
+              <div className="  md:ml-6 md:block ">
+                <div className="flex  space x-2 md:space-x-4 text-gray-300" >
+                
+                  <a href="#" className="px-1 py-2"> <img className=" md:h-7 w-auto" src={Red1} alt="logo" /></a>
+                  <a href="#" className=" px-1 py-2"><img className="md:h-7 w-auto" src={Red2} alt="logo" /></a>
+                  <a href="#" className=" px-1 py-2"><img className="md:h-7 w-auto" src={Red3} alt="logo" /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu, show/hide based on menu state. */}
+        <div className={`md:hidden ${mobileMenuClasses}`} id="mobile-menu">
+          <div className="space-y-1 px-2 pb-3 pt-2  text-gray-300">
+            <a href="#" className=" block   py-2 text-base font-medium" aria-current="page">Dashboard</a>
+            <a href="#" className="  block rounded-md  py-2 text-base font-medium">Team</a>
+            <a href="#" className="  block rounded-md  py-2 text-base font-medium">Projects</a>
+            <a href="#" className="  block rounded-md  py-2 text-base font-medium">Calendar</a>
+          </div>
+        </div>
+      </nav>
+    </>
   );
-}
+};
 
 export default Nav;
+
