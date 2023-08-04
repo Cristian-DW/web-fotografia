@@ -20,10 +20,10 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="bg-fondo2 fixed top-0 left-0 w-full ">
+      <nav className=" fixed top-0 left-0 z-20 w-full border-b-2 backdrop-blur-lg   ">
         <div className="mx-auto max-w-8xl px-2 md:px-10 lg:px-36 ">
-          <div className="relative flex h-16 items-center justify-between">
-            <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
+          <div className=" flex h-16 items-center justify-between">
+            <div className=" inset-y-0 left-0 flex items-center md:hidden">
               {/* Mobile menu button */}
               <button type="button" className={menuButtonClasses} onClick={toggleMobileMenu} aria-controls="mobile-menu" aria-expanded={isMobileMenuOpen}>
                 <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
@@ -31,27 +31,27 @@ const Nav = () => {
                 </svg>
               </button>
             </div>
-            <div className="flex flex-1 items-center justify-end  md:items-stretch md:justify-between">
-              <div className="flex flex-shrink-0 items-center  space-x-4 text-gray-300 md: mr-20">
-                <a href='/'> <img className="h-12 w-auto" src={Logo} alt="logo" /> </a>
-                <a href="#" className=" py-2 font-nav font-medium hidden md:block">Cristian Castro</a>
+            <div className="flex flex-1 items-center justify-around md:items-stretch md:justify-between">
+              <div className="flex flex-shrink-0 items-center  space-x-4 text-white md: mr-20">
+                <a className='button-hover' href='/'> <img className="h-12 w-auto" src={Logo} alt="logo" /> </a>
+                <a href="#" className=" py-2 font-nav font-medium hidden  button-hover md:block">Cristian Castro</a>
               </div>
               <div className="hidden md:ml-6 md:block">
-                <div className="flex space-x-8 text-gray-300" >
-                  <a href="#" className=" rounded-md  py-2 font-nav font-medium">Conoceme</a>
-                  <a href="#" className="    py-2 font-nav font-medium">Habilidades</a>
-                  <a href="#" className=" px-3 py-2 font-nav font-medium">Educación</a>
-                  <a href="#" className="   py-2 font-nav font-medium">Proyectos</a>
-                  <a href="#" className="   py-2 font-nav font-medium">Contáctame</a>
+                <div className="flex space-x-8 text-white " >
+                  <a href="#" className="py-2 font-nav font-medium  hover:border-b-2 button-hover ">Conoceme</a>
+                  <a href="#" className=" py-2 font-nav font-medium hover:border-b-2 button-hover">Habilidades</a>
+                  <a href="#" className=" px-3 py-2 font-nav font-medium hover:border-b-2 button-hover">Educación</a>
+                  <a href="#" className=" py-2 font-nav font-medium hover:border-b-2 button-hover">Proyectos</a>
+                  <a href="#" className="py-2 font-nav font-medium hover:border-b-2 button-hover">Contáctame</a>
 
                 </div>
               </div>
               <div className="  md:ml-6 md:block ">
-                <div className="flex  space x-2 md:space-x-4 text-gray-300" >
+                <div className="flex  space x-2 md:space-x-4 text-white" >
                 
-                  <a href="#" className="px-1 py-2"> <img className=" md:h-7 w-auto" src={Red1} alt="logo" /></a>
-                  <a href="#" className=" px-1 py-2"><img className="md:h-7 w-auto" src={Red2} alt="logo" /></a>
-                  <a href="#" className=" px-1 py-2"><img className="md:h-7 w-auto" src={Red3} alt="logo" /></a>
+                  <a href="#" className="px-1 py-2 button-hover"> <img className=" md:h-7 w-auto" src={Red1} alt="logo" /></a>
+                  <a href="#" className=" px-1 py-2 button-hover"><img className="md:h-7 w-auto" src={Red2} alt="logo" /></a>
+                  <a href="#" className=" px-1 py-2 button-hover"><img className="md:h-7 w-auto" src={Red3} alt="logo" /></a>
                 </div>
               </div>
             </div>
@@ -60,7 +60,7 @@ const Nav = () => {
 
         {/* Mobile menu, show/hide based on menu state. */}
         <div className={`md:hidden ${mobileMenuClasses}`} id="mobile-menu">
-          <div className="space-y-1 px-2 pb-3 pt-2  text-gray-300">
+          <div className="space-y-1 px-2 pb-3 pt-2  text-white">
             <a href="#" className=" block   py-2 text-base font-medium" aria-current="page">Dashboard</a>
             <a href="#" className="  block rounded-md  py-2 text-base font-medium">Team</a>
             <a href="#" className="  block rounded-md  py-2 text-base font-medium">Projects</a>

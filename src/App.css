@@ -6,10 +6,24 @@
   @apply bg-blue-500 text-white p-3 hover:bg-red-800;
 }
 
-.nav-des{
-  @apply transition ease-out duration-200 transform; 
-}
-
 .font-nav{
   @apply text-xl
+}
+
+.button-hover{
+  @apply transition-transform  duration-500 transform hover:scale-90;
+}
+
+.title{
+  @apply text-base sm:text-5xl md:text-5xl lg:text-7xl xl:text-8xl text-white ;
+}
+.word{
+  @apply text-base sm:text-2xl md:text-2xl lg:text-3xl xl:text-5xl text-white
+}
+.parrafo{
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-xl text-white;
+}
+
+.button{
+  @apply block text-center text-white bg-transparent border border-white rounded-full px-6 py-3 transition-colors duration-300 hover:bg-white hover:text-blue-500
 }
