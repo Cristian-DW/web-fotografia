@@ -5,6 +5,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
+    "@splinetool/react-spline": "^2.2.6",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,6 +13,8 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "spline": "^0.0.0",
+    "three": "^0.155.0",
+    "vanta": "^0.5.24",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

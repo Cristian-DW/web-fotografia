@@ -46,14 +46,6 @@ const Nav = () => {
 
                 </div>
               </div>
-              <div className="  md:ml-6 md:block ">
-                <div className="flex  space x-2 md:space-x-4 text-white" >
-                
-                  <a href="#" className="px-1 py-2 button-hover"> <img className=" md:h-7 w-auto" src={Red1} alt="logo" /></a>
-                  <a href="#" className=" px-1 py-2 button-hover"><img className="md:h-7 w-auto" src={Red2} alt="logo" /></a>
-                  <a href="#" className=" px-1 py-2 button-hover"><img className="md:h-7 w-auto" src={Red3} alt="logo" /></a>
-                </div>
-              </div>
             </div>
           </div>
         </div>

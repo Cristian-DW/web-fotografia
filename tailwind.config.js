@@ -7,8 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-      fondo: '#2f2c31',
-      fondo2:'#645ebf',
+      fondo: '#211F40',
+      fondo2:'#6919ff',
+      letra:'#fffef9',
       },
       fontFamily:{
         roboto:['Roboto Slab'],
