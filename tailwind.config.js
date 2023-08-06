@@ -1,23 +1,18 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
-  theme: {
-    extend: {
-      colors:{
+export const content = [
+  "./src/**/*.{js,jsx,ts,tsx}",
+];
+export const theme = {
+  extend: {
+    colors: {
       fondo: '#211F40',
-      fondo2:'#6919ff',
-      letra:'#fffef9',
-      },
-      fontFamily:{
-        roboto:['Roboto Slab'],
-      },
+      fondo2: '#6919ff',
+      letra: '#fffef9',
+    },
+    fontFamily: {
+      roboto: ['Roboto Slab'],
     },
   },
-  plugins: [
-    
-  ],
-}
+};
+export const plugins = [];
 
