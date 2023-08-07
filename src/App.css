@@ -21,7 +21,7 @@
 
 
 .button{
-  @apply block text-center  bg-transparent border border-white  px-6 py-3 transition-colors duration-500 hover:bg-white hover:text-blue-500
+  @apply  flex h-12 w-48 items-center justify-center overflow-hidden bg-transparent border shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out hover:shadow-white hover:before:h-12 hover:before:w-48 hover:text-fondo2
 }
 
 .App{ @apply min-h-full flex flex-col items-center justify-center}
@@ -43,18 +43,10 @@
       border-radius: 50%;
   }
 }
-
-.background {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  background: #6919ff;
-  overflow: hidden;
+.background{
+   @apply fixed w-screen h-screen top-0 left-0 m-0 p-0 bg-fondo2 overflow-hidden
 }
+
 .background li {
   position: absolute;
   display: block;
@@ -70,7 +62,7 @@
   width: 96px;
   height: 96px;
   bottom: -96px;
-  animation-delay: 1s;
+  animation-delay: 0.2s;
 }
 .background li:nth-child(1) {
   left: 59%;
@@ -91,10 +83,17 @@
   width: 224px;
   height: 224px;
   bottom: -224px;
-  animation-delay: 5s;
+  animation-delay: 15s;
 }
 .background li:nth-child(4) {
   left: 86%;
+  width: 216px;
+  height: 216px;
+  bottom: -216px;
+  animation-delay: 25s;
+}
+.background li:nth-child(5) {
+  left: 16%;
   width: 216px;
   height: 216px;
   bottom: -216px;
