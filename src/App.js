@@ -1,5 +1,7 @@
 
 import './App.css';
+import Background from './components/background';
+
 import Hero from './components/hero';
 import Nav from './components/nav';
 import Social from './components/social';
@@ -11,9 +13,12 @@ function App() {
     <div className="App">
       <Nav />
       <Social/>
-      <header className="App-header">
+      
+      <header className="header">
+      <Background/>
       <Hero/>
       </header>
+      
     </div>
   );
 }

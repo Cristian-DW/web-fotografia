@@ -12,7 +12,12 @@ export const theme = {
     fontFamily: {
       roboto: ['Roboto Slab'],
     },
+    gridTemplateColumns: {
+      '20': 'repeat(5, 1fr)',
+    },
+    gridTemplateRows: {
+      '20': 'repeat(4, 1fr)',
+    },
   },
 };
 export const plugins = [];
-
