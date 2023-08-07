@@ -21,7 +21,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 z-20 w-full border-b-2">
+      <nav className="fixed top-0 left-0 z-50 w-full border-b-2 backdrop-blur-lg  ">
         <div className="mx-auto max-w-8xl px-2 md:px-10 lg:px-36">
           <div className="flex h-16 items-center justify-between">
             <div className="absolute t-0 right-2 flex items-center md:hidden">

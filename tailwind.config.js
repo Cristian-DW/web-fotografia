@@ -5,13 +5,17 @@ export const content = [
 export const theme = {
   extend: {
     colors: {
-      fondo: '#211F40',
+      fondo: '#060918',
       fondo2: '#6919ff',
       letra: '#fffef9',
     },
     fontFamily: {
       roboto: ['Roboto Slab'],
     },
+    screens: {
+      'xxl': '2560px',
+    },
+
   },
 };
 export const plugins = [];

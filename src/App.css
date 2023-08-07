@@ -5,7 +5,7 @@
 
 
 .font-nav{
-  @apply text-xl
+  @apply text-xl;
 }
 
 .button-hover{
@@ -16,15 +16,15 @@
   @apply text-5xl text-center mb-7 sm:text-5xl md:text-7xl lg:text-9xl;
 }
 .word{
-  @apply text-3xl mb-20 sm:text-2xl md:text-2xl lg:text-3xl xl:text-5xl 
+  @apply text-3xl mb-20 sm:text-2xl md:text-2xl lg:text-3xl xl:text-5xl ;
 }
 
 
 .button{
-  @apply  flex h-12 w-48 items-center justify-center overflow-hidden bg-transparent border shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out hover:shadow-white hover:before:h-12 hover:before:w-48 hover:text-fondo2
+  @apply  flex h-12 w-48 items-center justify-center overflow-hidden bg-transparent border shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out hover:shadow-white hover:before:h-12 hover:before:w-48 hover:text-fondo2;
 }
 
-.App{ @apply min-h-full flex flex-col items-center justify-center}
+.App{ @apply min-h-full flex flex-col items-center justify-center;}
 
 .header{
   @apply w-screen h-screen;
@@ -33,7 +33,7 @@
 /* src/styles.css */
 @keyframes animate {
   0%{
-      transform: translateY(0) rotate(0deg);
+      transform: translateY(10px) rotate(0deg);
       opacity: 1;
       border-radius: 0;
   }
@@ -44,7 +44,7 @@
   }
 }
 .background{
-   @apply fixed w-screen h-screen top-0 left-0 m-0 p-0 bg-fondo2 overflow-hidden
+   @apply fixed w-screen h-screen top-0 left-0 m-0 p-0 bg-fondo2 overflow-hidden;
 }
 
 .background li {
@@ -54,7 +54,7 @@
   width: 20px;
   height: 20px;
   background: rgba(255, 255, 255, 0.2);
-  animation: animate 32s linear infinite;
+  animation: animate 22s linear infinite;
 }
 
 .background li:nth-child(0) {
@@ -69,28 +69,28 @@
   width: 194px;
   height: 194px;
   bottom: -194px;
-  animation-delay: 5s;
+  animation-delay: 0.1s;
 }
 .background li:nth-child(2) {
-  left: 4%;
+  left: 1%;
   width: 186px;
   height: 186px;
   bottom: -186px;
-  animation-delay: 9s;
+  animation-delay: 5s;
 }
 .background li:nth-child(3) {
   left: 46%;
   width: 224px;
   height: 224px;
   bottom: -224px;
-  animation-delay: 15s;
+  animation-delay: 10s;
 }
 .background li:nth-child(4) {
   left: 86%;
   width: 216px;
   height: 216px;
   bottom: -216px;
-  animation-delay: 25s;
+  animation-delay: 15s;
 }
 .background li:nth-child(5) {
   left: 16%;
@@ -100,4 +100,7 @@
   animation-delay: 20s;
 }
 
-/* Resto de estilos y reglas para los elementos .background span:nth-child(0), .background span:nth-child(1), ... */
+.top-main {
+  position: relative;
+  top: 67rem;
+}
