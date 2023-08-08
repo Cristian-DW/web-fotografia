@@ -5,6 +5,8 @@ import Hero from './components/hero';
 import Nav from './components/nav';
 import Social from './components/social';
 import About from './components/about';
+import Education from './components/education';
+import Skills from './components/skills';
 
 
 
@@ -18,8 +20,10 @@ function App() {
       <Background/>
       <Hero/>
       </header>
-      <main className=' top-main z-20  bg-black text-white'>
+      <main className=' top-main z-20  bg-fondo'>
         <About/>
+        <Skills/>
+        <Education/>
       </main>
       
     </div>

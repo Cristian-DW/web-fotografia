@@ -71,7 +71,7 @@ const Nav = () => {
       </nav>
 
       {/* Capa de fondo desenfocado */}
-      {isMobileMenuOpen && <div className="fixed inset-0 z-10 backdrop-blur-lg backdrop-filter backdrop-blur" onClick={toggleMobileMenu} />}
+      {isMobileMenuOpen && <div className="fixed inset-0 z-10 backdrop-blur-lg backdrop-filter " onClick={toggleMobileMenu} />}
 
       {/* Componente del menú desplegable */}
       {isMobileMenuOpen && (
