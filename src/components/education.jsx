@@ -20,8 +20,8 @@ function Education() {
   return (
     <div id="education" className=" md:grid grid-cols-5 gap-10 justify-center items-center md:p-32">
       <div className="md:col-span-2 flex-col  xxl:flex justify-center ">
-        <h3>Educación</h3>
-        <p>
+        <h3 className='text-xl md:text-3xl mb-4'>Educación</h3>
+        <p className='text-lg font-light  md:text-xl'>
           Profesional con habilidades para interpretar y diseñar sistemas
           informáticos que satisfacen las necesidades del usuario. Con
           conocimientos en programación, análisis de datos, interfaces de

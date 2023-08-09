@@ -1,12 +1,14 @@
 
 import './App.css';
-import Background from './components/background';
+import Background from './components/extras/background';
 import Hero from './components/hero';
 import Nav from './components/nav';
 import Social from './components/social';
 import About from './components/about';
 import Education from './components/education';
 import Skills from './components/skills';
+import Project from './components/project';
+
 
 
 
@@ -22,8 +24,9 @@ function App() {
       </header>
       <main className=' top-main z-20  bg-fondo'>
         <About/>
-        <Skills/>
+
         <Education/>
+        <Project/>
       </main>
       
     </div>
