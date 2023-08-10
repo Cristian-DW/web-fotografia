@@ -1,5 +1,5 @@
 
-import './App.css';
+import './App.css'
 import Background from './components/extras/background';
 import Hero from './components/hero';
 import Nav from './components/nav';
