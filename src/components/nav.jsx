@@ -22,9 +22,9 @@ const Nav = () => {
   return (
     <>
       <nav className="fixed top-0 left-0 z-50 w-full border-b-2 backdrop-blur-lg  ">
-        <div className="mx-auto max-w-8xl px-2 md:px-10 lg:px-36">
+        <div className="mx-auto max-w-8xl px-2 lg:px-10 lg:px-36">
           <div className="flex h-16 items-center justify-between">
-            <div className="absolute t-0 right-2 flex items-center md:hidden">
+            <div className="absolute t-0 right-2 flex items-center lg:hidden">
               <button
                 type="button"
                 className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -37,16 +37,16 @@ const Nav = () => {
                 </svg>
               </button>
             </div>
-            <div className="flex flex-1 items-center md:items-stretch md:justify-between">
-              <div className="flex flex-shrink-0 items-end space-x-4 md:mr-20">
+            <div className="flex flex-1 items-center lg:items-stretch lg:justify-between">
+              <div className="flex flex-shrink-0 items-end space-x-4 lg:mr-20">
                 <a className="button-hover" href="/">
                   <img className="h-12 w-auto" src={Logo} alt="logo" />
                 </a>
-                <a href="#" className="py-2 font-nav font-medium button-hover md:block">
+                <a href="#" className="py-2 font-nav font-medium button-hover lg:block">
                   Cristian Castro
                 </a>
               </div>
-              <div className="hidden md:ml-6 md:block">
+              <div className="hidden lg:ml-6 lg:block">
                 <div className="flex space-x-8 text-white">
                   <a href="#" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
                     Conoceme
@@ -76,7 +76,7 @@ const Nav = () => {
       {/* Componente del menú desplegable */}
       {isMobileMenuOpen && (
         <div
-          className={`md:hidden ${mobileMenuClasses} fixed top-16 right-0 w-full h-full bg-fondo z-20`}
+          className={`lg:hidden ${mobileMenuClasses} fixed top-16 right-0 w-full h-full bg-fondo z-20`}
         >
           <div className="flex flex-col items-center justify-between w-full">
             <a href="#" className="block py-16 text-2xl w-full text-center" aria-current="page">

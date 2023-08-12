@@ -1,66 +1,72 @@
 import React from 'react';
-import Slider from 'react-slick';
+import Slider from 'react-slick'; // Cambia el nombre de la importación a Slider
 import ImgSkill from "../media/html.svg"
 import ImgSkill2 from "../media/css.svg"
 import ImgSkill3 from "../media/js.svg"
 import ImgSkill4 from "../media/git.svg"
 import ImgSkill5 from "../media/react.svg"
 import ImgSkill6 from "../media/sass.svg"
-import ImgSkill7 from "../media/figma.svg"
+import ImgSkill7 from "../media/figma.svg";
+import "slick-carousel/slick/slick.css"; // Asegúrate de importar los estilos de react-slick
+import "slick-carousel/slick/slick-theme.css"; // Asegúrate de importar los estilos del tema de react-slick
 
-
-
-
-
-const Skills = () => {
+function Skills() {
   const settings = {
-    dots: false, // Ocultar los puntos de indicación (dots)
-    arrows: false, // Ocultar los botones de navegación (flechas)
+    dots: false,
+    arrows: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // Mostrar 3 imágenes a la vez
+    slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 768, // Ajusta el breakpoint según tus necesidades
+        breakpoint: 1000,
         settings: {
-          slidesToShow: 2, // Mostrar solo 2 imágenes a la vez en pantallas más pequeñas
+          slidesToShow: 2,
         },
       },
     ],
-    autoplay: true, // Habilitar el autoplay
-    autoplaySpeed: 2300, // Tiempo de espera entre cada cambio (en milisegundos)
+    autoplay: true,
+    autoplaySpeed: 2300,
     pauseOnHover: true,
   };
 
   return (
-    <div className="sliders">
-      <Slider {...settings}>
-        <div className="img-slide">
-          <img src={ImgSkill} alt="HTML" title='HTML' />
+    <div className="w-screen h-20 lg:h-40  bg-fondo2 flex flex-col justify-center items-center ">
+      <div className='w-1/2 h-40  flex justify-center items-center'>
+      {/* Utiliza el componente Slider en lugar de SlickCarousel */}
+      <Slider {...settings} className='w-full '>
+      <div className="flex justify-center items-center h-full ml-3  lg:ml-14"> 
+          <img src={ImgSkill} alt="imag" className=" w-20 lg:w-40" />
         </div>
-        <div className="img-slide">
-          <img src={ImgSkill2} alt="CSS" title='CSS'/>
-        </div>
-        <div className="img-slide">
-          <img src={ImgSkill3} alt="JavaScript" title='JavaScript' />
-        </div>
-        <div className="img-slide">
-          <img src={ImgSkill4} alt="Git" title='Git'/>
-        </div>
-        <div className="img-slide">
-          <img src={ImgSkill5} alt="React" title='React JS'/>
-        </div>
-        <div className="img-slide">
-          <img src={ImgSkill6} alt="Sass" title='Sass' />
-        </div>
-        <div className="img-slide">
-          <img src={ImgSkill7} alt="Figma" title='Figma'/>
-        </div>
+        <div className="flex justify-center items-center h-full ml-3 lg:ml-14"> 
         
+          <img src={ImgSkill2} alt="ima2" className=" w-20 lg:w-40" />
+        </div>
+        <div className="flex justify-center items-center h-full ml-3  lg:ml-14"> 
+        
+          <img src={ImgSkill3} alt="ima3" className= " w-20 lg:w-40" />
+        </div>
+        <div className="flex justify-center items-center h-full ml-3 lg:ml-14"> 
+        
+          <img src={ImgSkill4} alt="ima3" className= " w-20 lg:w-40" />
+        </div>
+        <div className="flex justify-center items-center h-fullml-3  lg:ml-14"> 
+        
+          <img src={ImgSkill5} alt="ima3" className= " w-20 lg:w-40" />
+        </div>
+        <div className="flex justify-center items-center h-full ml-3 lg:ml-14"> 
+        
+          <img src={ImgSkill7} alt="ima3" className= " w-20 lg:w-40" />
+        </div>
+        <div className="flex justify-center items-center h-full ml-3 lg:ml-14"> 
+        
+          <img src={ImgSkill6} alt="ima3" className= " w-20 lg:w-40" />
+        </div>
       </Slider>
     </div>
+    </div>
   );
-};
+}
 
 export default Skills;

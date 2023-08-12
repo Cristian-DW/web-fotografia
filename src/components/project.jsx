@@ -44,7 +44,7 @@ const Project = () => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen mt-20">
-      <h2 className='text-xl md:text-3xl mb-4'>Proyectos</h2>
+      <h2 className='text-xl lg:text-3xl mb-4'>Proyectos</h2>
       <div className="flex justify-center items-center flex-wrap container mx-auto gap-5">
         {projects.map((project, index) => (
           <ProjectsCard key={index} title={project.title} description={project.description} />
