@@ -1,18 +1,30 @@
 import React from 'react';
-import {Button, Dialog, DialogHeader, DialogBody,  DialogFooter, Typography,} from "@material-tailwind/react";
+import {
+  Button,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+  Typography,
+} from '@material-tailwind/react';
 
-function Modals({ show, onHide, boton }) {
-  const manejarCierreModal = () => {
-    onHide();
-  };
+  function Modals({ show, onHide, boton }) {
+    const manejarCierreModal = () => {
+      onHide();
+    };
+
+
+  const dialogHeaderStyles = 'bg-blue-500 text-white';
+  const dialogBodyStyles = 'h-[20rem] overflow-scroll bg-gray-100';
+  const dialogContentStyles = 'text-gray-800';
 
   return (
-    <Dialog open={show} onClose={manejarCierreModal} className='size="sm"'>
+    <Dialog open={show} onClose={manejarCierreModal} size="md" className="mx-auto">
       {boton === 'icono1' && (
         <>
-          <DialogHeader className="bg-blue-500 text-white">Certificación de Microsoft</DialogHeader>
-          <DialogBody divider className='h-[40rem] overflow-scroll'>
-            <Typography>
+          <DialogHeader className={dialogHeaderStyles}>Certificación de Microsoft</DialogHeader>
+          <DialogBody divider className={dialogBodyStyles}>
+            <Typography className={dialogContentStyles}>
               Contenido para el icono 1 - Certificación de Microsoft.
             </Typography>
           </DialogBody>
@@ -21,9 +33,9 @@ function Modals({ show, onHide, boton }) {
 
       {boton === 'icono2' && (
         <>
-          <DialogHeader className="bg-green-500 text-white">Certificación de Google</DialogHeader>
-          <DialogBody divider className='h-[40rem] overflow-scroll'>
-            <Typography>
+          <DialogHeader className={dialogHeaderStyles}>Certificación de Google</DialogHeader>
+          <DialogBody divider className={dialogBodyStyles}>
+            <Typography className={dialogContentStyles}>
               Contenido para el icono 2 - Certificación de Google.
             </Typography>
           </DialogBody>
@@ -32,9 +44,9 @@ function Modals({ show, onHide, boton }) {
 
       {boton === 'icono3' && (
         <>
-          <DialogHeader className="bg-purple-500 text-white">Tecnólogo del SENA</DialogHeader>
-          <DialogBody divider className='h-[40rem] overflow-scroll'>
-            <Typography>
+          <DialogHeader className={dialogHeaderStyles}>Tecnólogo del SENA</DialogHeader>
+          <DialogBody divider className={dialogBodyStyles}>
+            <Typography className={dialogContentStyles}>
               Contenido para el icono 3 - Tecnólogo del SENA.
             </Typography>
           </DialogBody>
@@ -42,7 +54,7 @@ function Modals({ show, onHide, boton }) {
       )}
 
       <DialogFooter className='space-x-2'>
-        <Button variant="outlined" color="red"  buttonType="link" onClick={manejarCierreModal}>
+        <Button variant="outlined" color="red" buttonType="link" onClick={manejarCierreModal}>
           Cerrar
         </Button>
         <Button color="green" onClick={manejarCierreModal}>

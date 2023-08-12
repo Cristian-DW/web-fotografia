@@ -10,7 +10,7 @@ function About(){
             </div>
             <div className='  md:col-span-3 '>
             <h3 className=" text-xl md:text-3xl mb-4">¡HOLA!</h3>
-                <p className="text-lg font-light  md:text-xl">Soy Cristian Castro, un enamorado del desarrollo frontend web con conocimientos en la creación de experiencias digitales atractivas y funcionales. Durante mi carrera profesional, he trabajado en diversos proyectos, desde sitios web empresariales hasta aplicaciones web dinámicas. Estoy familiarizado con los estándares de la industria y las mejores prácticas de desarrollo frontend, y me mantengo actualizado con las últimas tendencias y tecnologías. </p>
+                <p className="text-md font-light  md:text-xl">Soy Cristian Castro, un enamorado del desarrollo frontend web con conocimientos en la creación de experiencias digitales atractivas y funcionales. Durante mi carrera profesional, he trabajado en diversos proyectos, desde sitios web empresariales hasta aplicaciones web dinámicas. Estoy familiarizado con los estándares de la industria y las mejores prácticas de desarrollo frontend, y me mantengo actualizado con las últimas tendencias y tecnologías. </p>
             </div>
            
         </div>
