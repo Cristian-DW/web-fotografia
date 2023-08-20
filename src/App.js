@@ -15,7 +15,7 @@ import Project from './components/project';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App h-screen">
       <Nav />
       <Social/>
       <header className="header fixed top-0 left-0 w-screen ">
@@ -28,7 +28,6 @@ function App() {
         <Education/>
         <Project/>
       </main>
-      
     </div>
   );
 }

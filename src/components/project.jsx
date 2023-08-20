@@ -43,7 +43,7 @@ const Project = () => {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen mt-20">
+    <div className="flex flex-col justify-center items-center ">
       <h2 className='text-xl lg:text-3xl mb-4'>Proyectos</h2>
       <div className="flex justify-center items-center flex-wrap container mx-auto gap-5">
         {projects.map((project, index) => (

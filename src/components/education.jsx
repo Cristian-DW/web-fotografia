@@ -27,9 +27,10 @@ function Education() {
         <article className="hover:cursor-pointer">
           <ImageWithPopover
             imageUrl={ImgSena}
-            name="Yet Another Name"
-            username="yetanotherusername"
-            bio="Bio for the third image."
+            name="Certificación Tecnologo en analisis y desarrollo de software"
+            bio="Tuve la oportunidad de participar en"
+            fecha="2010"
+            ubication="caca"
           />
         </article>
 
@@ -39,6 +40,8 @@ function Education() {
             name="Tania Andrew"
             username="canwu"
             bio="Frontend Developer • Major interest in Web Development: motivated to achieve measurable results, to deepen my knowledge and improve my skills."
+            fecha="2010"
+            ubication="caca"
           />
         </article>
 
@@ -48,6 +51,8 @@ function Education() {
             name="Tania Andrew"
             username="canwu"
             bio="Frontend Developer • Major interest in Web Development: motivated to achieve measurable results, to deepen my knowledge and improve my skills."
+            fecha="2010"
+            ubication="caca"
           />
         </article>
         
@@ -57,6 +62,8 @@ function Education() {
             name="Tania Andrew"
             username="canwu"
             bio="Frontend Developer • Major interest in Web Development: motivated to achieve measurable results, to deepen my knowledge and improve my skills."
+            fecha="2010"
+            ubication="caca"
           />
         </article>
       </div>
