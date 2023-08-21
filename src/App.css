@@ -16,15 +16,18 @@
   @apply text-5xl text-center mb-7 sm:text-5xl md:text-7xl lg:text-9xl;
 }
 .word{
-  @apply text-3xl mb-20 sm:text-2xl md:text-2xl lg:text-3xl xl:text-5xl ;
+  @apply text-3xl mb-20 sm:text-2xl md:text-2xl lg:text-3xl xl:text-5xl  ;
 }
 
 
 .button{
-  @apply  flex h-12 w-48 items-center justify-center overflow-hidden bg-transparent border shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out hover:shadow-white hover:before:h-12 hover:before:w-48 hover:text-fondo2;
+  @apply  flex h-12 w-48 items-center justify-center overflow-hidden bg-transparent border shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out hover:shadow-white hover:before:h-12 hover:before:w-48;
 }
 
-.App{ @apply min-h-full flex flex-col items-center justify-center;}
+.input{
+  @apply w-72 h-12 text-sm p-1.5 border bg-fondo;
+}
+
 
 .header{
   @apply w-screen h-screen;
@@ -121,4 +124,18 @@
 @keyframes project-infos-animation {
   from {opacity: 0;}
   to {opacity: 1;}
+}
+
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Ajusta esta distancia según tu preferencia */
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
 }

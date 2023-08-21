@@ -13,6 +13,9 @@ export const theme = {
     fontFamily: {
       roboto: ['Roboto Slab'],
     },
+    // fontSize:{
+    //   tit:'120px',
+    // },
     screens: {
       'xxl': '2560px',
     },

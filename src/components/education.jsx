@@ -8,7 +8,7 @@ function Education() {
   return (
     <div
       id="education"
-      className="p-10 lg:grid lg:py-72 grid-cols-7 gap-x-10 justify-center items-center lg:px-40"
+      className="p-10 lg:grid lg:py-72 grid-cols-7 gap-x-10 justify-center items-center lg:px-40 min-h-screen"
     >
       <div className=" mb-8 lg:col-span-4 flex-col xxl:flex justify-center lg:border-r-2 lg:pr-4">
         <h3 className="text-center text-xl lg:text-3xl mb-4 lg:text-left">

@@ -8,6 +8,7 @@ import About from './components/about';
 import Education  from './components/education';
 import Skills from './components/skills';
 import Project from './components/project';
+import ContactForm from './components/contact';
 
 
 
@@ -15,7 +16,7 @@ import Project from './components/project';
 
 function App() {
   return (
-    <div className="App h-screen">
+    <div className="App">
       <Nav />
       <Social/>
       <header className="header fixed top-0 left-0 w-screen ">
@@ -27,6 +28,7 @@ function App() {
         <Skills/>
         <Education/>
         <Project/>
+        <ContactForm/>
       </main>
     </div>
   );

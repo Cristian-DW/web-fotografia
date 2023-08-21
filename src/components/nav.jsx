@@ -42,25 +42,25 @@ const Nav = () => {
                 <a className="button-hover" href="/">
                   <img className="h-12 w-auto" src={Logo} alt="logo" />
                 </a>
-                <a href="#" className="py-2 font-nav font-medium button-hover lg:block">
+                <a href="/" className="py-2 font-nav font-medium button-hover lg:block">
                   Cristian Castro
                 </a>
               </div>
               <div className="hidden lg:ml-6 lg:block">
                 <div className="flex space-x-8 text-white">
-                  <a href="#" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
+                  <a href="#about" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
                     Conoceme
                   </a>
-                  <a href="#" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
+                  <a href="#skill" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
                     Habilidades
                   </a>
-                  <a href="#" className="px-3 py-2 font-nav font-medium hover:border-b-2 button-hover">
+                  <a href="#education" className="px-3 py-2 font-nav font-medium hover:border-b-2 button-hover">
                     Educación
                   </a>
-                  <a href="#" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
+                  <a href="#porfolio" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
                     Proyectos
                   </a>
-                  <a href="#" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
+                  <a href="#contact" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
                     Contáctame
                   </a>
                 </div>

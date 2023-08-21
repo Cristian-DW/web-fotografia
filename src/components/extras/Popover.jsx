@@ -18,12 +18,10 @@ export function ImageWithPopover({ imageUrl, name, username, bio, fecha, ubicati
 
   return (
     <div className="relative inline-block ">
-      <img
+      <img width='auto' height='auto'
         src={imageUrl}
         alt={name}
-        className="object-cove
-        
-        kxdcjgAJshkgr  w-24 h-auto  cursor-pointer"
+        className="object-cover w-24 h-auto  cursor-pointer"
         {...triggers}
       />
       <Popover

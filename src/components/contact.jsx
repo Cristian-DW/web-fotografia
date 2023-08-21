@@ -19,9 +19,9 @@ const ContactForm = () => {
   };
 
   return (
+    <div id='contact' className=' flex flex-wrap  gap-x-10 w-screen p-10 lg:p-40 bg-fondo  gap-10 justify-center items-center  min-h-screen '>
     <div className=''>
-    <div className=''>
-        <h3>Contáctame</h3>
+        <h3 className=''>Contáctame</h3>
         <p>¿Tienes un problema que resolver? <br></br>
             Cuéntame tus ideas para desarrollar el sitio web de tus sueños.
         </p>
@@ -29,9 +29,9 @@ const ContactForm = () => {
 
     <div className=''> 
     <form onSubmit={handleSubmit}>
-      <div className=''>
+      <div className='flex flex-col mb-2'>
         <label htmlFor="name">Nombre</label>
-        <input
+        <input className='input'
           type="text"
           id="name"
           name="name"
@@ -40,9 +40,9 @@ const ContactForm = () => {
           required
         />
       </div>
-      <div className=''>
+      <div className='flex flex-col mb-2'>
         <label htmlFor="email">Email</label>
-        <input
+        <input className='input'
           type="email"
           id="email"
           name="email"
@@ -51,9 +51,9 @@ const ContactForm = () => {
           required
         />
       </div>
-      <div className='t'>
+      <div className='flex flex-col mb-2'>
         <label htmlFor="message">Mensaje</label>
-        <textarea
+        <textarea className='input min-w-20 max-h-28'
           id="message"
           name="message"
           value={formData.message}
@@ -61,7 +61,7 @@ const ContactForm = () => {
           required
         />
       </div>
-      <button className='button' type="submit">Enviar</button>
+      <button className='button hover:text-fondo mt-6 ' type="submit">Enviar</button>
     </form>
     </div>
     </div>
