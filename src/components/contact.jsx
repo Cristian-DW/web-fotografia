@@ -19,15 +19,15 @@ const ContactForm = () => {
   };
 
   return (
-    <div id='contact' className=' flex flex-wrap  gap-x-10 w-screen p-10 lg:p-40 bg-fondo  gap-10 justify-center items-center  min-h-screen '>
-    <div className=''>
+    <div id='contact' className=' flex flex-wrap  gap-x-10 w-screen p-10 lg:p-40 bg-fondo grid-cols-5 justify-center items-center  min-h-screen '>
+    <div className='col-2'>
         <h3 className=''>Contáctame</h3>
         <p>¿Tienes un problema que resolver? <br></br>
             Cuéntame tus ideas para desarrollar el sitio web de tus sueños.
         </p>
     </div>
 
-    <div className=''> 
+    <div className='col-3'> 
     <form onSubmit={handleSubmit}>
       <div className='flex flex-col mb-2'>
         <label htmlFor="name">Nombre</label>
@@ -42,7 +42,7 @@ const ContactForm = () => {
       </div>
       <div className='flex flex-col mb-2'>
         <label htmlFor="email">Email</label>
-        <input className='input'
+        <input className='input w-auto h-12'
           type="email"
           id="email"
           name="email"
