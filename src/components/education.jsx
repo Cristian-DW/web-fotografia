@@ -8,22 +8,17 @@ function Education() {
   return (
     <div
       id="education"
-      className="p-10 lg:grid lg:py-72 grid-cols-7 gap-x-10 justify-center items-center lg:px-40 min-h-screen"
+      className="p-10 lg:grid lg:py-72 grid-cols-7 gap-x-10 justify-center items-center lg:px-40 min-h-screen "
     >
       <div className=" mb-8 lg:col-span-4 flex-col xxl:flex justify-center lg:border-r-2 lg:pr-4">
-        <h3 className="text-center text-xl lg:text-3xl mb-4 lg:text-left">
+        <h3 className="text-center text-xl lg:text-5xl mb-4 lg:text-left">
           Educación
         </h3>
-        <p className="text-md font-light lg:text-xl">
-          Profesional con habilidades para interpretar y diseñar sistemas
-          informáticos que satisfacen las necesidades del usuario. Con
-          conocimientos en programación, análisis de datos, interfaces de
-          usuario, bases de datos y seguridad informática. Destreza en trabajar
-          con computadoras, comunicarse con usuarios y colegas, y experiencia en
-          metodologías ágiles para el desarrollo de software.
+        <p className="text-md font-light lg:text-2xl">
+          Profesional capacitado y apasionado por la creación de soluciones tecnológicas innovadoras. Mi sólida formación en análisis y desarrollo de aplicaciones me ha brindado una comprensión profunda de cómo crear sistemas eficientes y robustos. Sin embargo, mi enfoque va más allá de la funcionalidad técnica: combino mis habilidades técnicas con un conocimiento profundo de marketing digital y diseño UX/UI para ofrecer productos que no solo cumplen con los requisitos técnicos, sino que también cautivan a los usuarios y generan resultados comerciales positivos.
         </p>
       </div>
-      <div className="lg:col-span-3 flex  justify-between  gap-x-20">
+      <div className="lg:col-span-3 flex  justify-between">
         <article className="hover:cursor-pointer">
           <ImageWithPopover
             imageUrl={ImgSena}

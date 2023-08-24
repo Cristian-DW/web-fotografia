@@ -21,17 +21,15 @@
 
 
 .button{
-  @apply  flex h-12 w-48 items-center justify-center overflow-hidden bg-transparent border shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out hover:shadow-white hover:before:h-12 hover:before:w-48;
+  @apply  flex h-12 items-center justify-center overflow-hidden bg-transparent border shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out hover:shadow-white hover:before:h-12 hover:before:w-48;
 }
 
-.input{
-  @apply  text-sm p-1.5 border bg-fondo;
-}
 
 
 .header{
   @apply w-screen h-screen;
 }
+
 
 /* src/styles.css */
 @keyframes animate {
@@ -105,7 +103,7 @@
 
 .top-main {
   position: relative;
-  top: 67rem;
+  top: 68rem;
 }
 
 

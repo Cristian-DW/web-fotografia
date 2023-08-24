@@ -21,8 +21,8 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 z-50 w-full border-b-2 backdrop-blur-lg  ">
-        <div className="mx-auto max-w-8xl px-2 lg:px-10 lg:px-36">
+      <nav className="fixed top-0 left-0 z-50 w-full border-b-2 backdrop-blur-lg animate-fade-down animate-once animate-ease-linear">
+        <div className="mx-auto max-w-8xl px-2  lg:px-36">
           <div className="flex h-16 items-center justify-between">
             <div className="absolute t-0 right-2 flex items-center lg:hidden">
               <button
@@ -50,9 +50,6 @@ const Nav = () => {
                 <div className="flex space-x-8 text-white">
                   <a href="#about" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
                     Conoceme
-                  </a>
-                  <a href="#skill" className="py-2 font-nav font-medium hover:border-b-2 button-hover">
-                    Habilidades
                   </a>
                   <a href="#education" className="px-3 py-2 font-nav font-medium hover:border-b-2 button-hover">
                     Educación

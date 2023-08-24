@@ -30,12 +30,12 @@ export function ImageWithPopover({ imageUrl, name, username, bio, fecha, ubicati
         className="w-full h-56"
       >
         <PopoverHandler>
-          <div className="absolute top-0 right-0 ">
+          <div className="absolute top-0 right-10 ">
             <Button variant="text" className="hidden">Profile Info</Button>
           </div>
         </PopoverHandler>
         <PopoverContent
-          className="z-50 max-w-[20rem] bg-slate-600 "
+          className="z-50 max-w-[20rem] bg-black "
           {...triggers}
         >
           {/* Popover Content */}

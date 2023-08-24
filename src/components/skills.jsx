@@ -32,7 +32,7 @@ function Skills() {
   };
 
   return (
-    <div id='skill' className="w-screen h-20 lg:h-40  bg-fondo2 flex flex-col justify-center items-center  ">
+    <div id='skill' className="w- h-20 lg:h-40  bg-fondo2 flex flex-col justify-center items-center  ">
       <div  className='w-1/2 h-40  flex justify-center items-center'>
       {/* Utiliza el componente Slider en lugar de SlickCarousel */}
       <Slider {...settings} className='w-full '>

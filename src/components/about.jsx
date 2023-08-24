@@ -6,7 +6,7 @@ function About() {
   return (
     <div
       id="about"
-      className="w-screen p-10 lg:py-44 bg-fondo lg:grid grid-cols-5 gap-10 justify-center items-center lg:px-40  min-h-screen"
+      className="w-full p-10 lg:py-44 bg-fondo lg:grid grid-cols-5 gap-10 justify-center items-center lg:px-40  min-h-screen"
     >
       <div className=" lg:col-span-2 lg:block xxl:flex justify-center">
         <img
@@ -19,7 +19,7 @@ function About() {
       </div>
       <div className="  lg:col-span-3 ">
         <h3 className=" text-xl lg:text-3xl mb-4">¡HOLA!</h3>
-        <p className="text-md font-light  lg:text-xl">
+        <p className="text-md font-light  lg:text-2xl">
           Soy Cristian Castro, un enamorado del desarrollo frontend web con
           conocimientos en la creación de experiencias digitales atractivas y
           funcionales. Durante mi carrera profesional, he trabajado en diversos
@@ -28,7 +28,7 @@ function About() {
           las mejores prácticas de desarrollo frontend, y me mantengo
           actualizado con las últimas tendencias y tecnologías.{" "}
         </p>
-        <button className="button  hover:text-fondo mt-20">
+        <button className="button  hover:text-fondo mt-20 w-48">
           <span class="relative z-10">
             <a href="#porfolio">Contáctame</a>
           </span>

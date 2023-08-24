@@ -14,7 +14,7 @@ function Title() {
   }, []);
 
   return (
-        <h2 className="word">{palabras[primeraPalabra]}</h2>
+        <h2 className="word animate-fade-down animate-once animate-delay-[1200ms] animate-ease-linear">{palabras[primeraPalabra]}</h2>
 
   );
 }
