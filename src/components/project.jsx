@@ -1,22 +1,26 @@
 import React from 'react';
 import '../App.css';
+import ProjectUno from '../media/projectUno.webp'
+import ProjectDos from '../media/project2.webp'
 
-const ProjectsCard = ({ title, description, backgroundImage }) => {
+
+const ProjectsCard = ({ title, description, fecha, backgroundImage }) => {
   return (
-    <div className="relative w-1/2 h-80 shadow-md overflow-hidden transform transition-transform hover:scale-105 duration-300 ease-in-out">
+    <div className="relative w-80 h-44  md:w-[45rem] md:h-96 shadow-md overflow-hidden transform transition-transform  hover:scale-105 duration-1000 ease-in-out">
       <div
-        className="absolute inset-0 bg-cover bg-center transform transition-transform hover:scale-105 duration-300 ease-in-out"
+        className="absolute inset-0 bg-center opacity-80 transform transition-transform bg-cover  hover:scale-105 duration-1000 ease-in-out"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       ></div>
-      <div className="absolute inset-0 bg-opacity-70 bg-black flex flex-col justify-end text-white transform transition-opacity opacity-0 hover:opacity-100 duration-300 ease-in-out">
-        <h3 className="text-xl font-semibold uppercase mb-1.5 transition-colors hover:text-white text-purple-700">
+      <div className="absolute inset-0 bg-opacity-70 bg-black flex flex-col justify-center items-center text-white transform transition-opacity opacity-0 hover:opacity-100 duration-1000 ease-in-out">
+        <h3 className=" text-2xl lg:text-5xl font-semibold uppercase my-2 lg:mb-7 ">
           {title}
         </h3>
-        <p className="text-white font-light opacity-0 mb-1 transition-opacity duration-1000 ease-in-out animation-delay-800">
-          {description}
-        </p>
-        <button className="block bg-purple-700 text-white py-2 px-6 text-sm font-semibold rounded-full transform transition-transform hover:scale-105 duration-300 ease-in-out">
-          <a href="#">Ver Más</a>
+        <p className="text-white font-light lg:font-normal lg:text-xl">{description}</p>
+        <p className="text-white font-light text-sm lg:text-xl">{fecha}</p>
+       <button className="button  hover:text-fondo mt-10 w-28   ">
+          <span class="relative z-10 text-xs lg:text-xl">
+            <a href="#">Ver Más</a>
+          </span>
         </button>
       </div>
     </div>
@@ -26,28 +30,43 @@ const ProjectsCard = ({ title, description, backgroundImage }) => {
 const Project = () => {
   const projects = [
     {
-      title: "Project 1",
-      description: "Description for Project 1",
+      title: "ViajaYa",
+      description: "Landing page",
+      fecha: "Marzo de 2022",
       backgroundImage:
-        "https://images.pexels.com/photos/776656/pexels-photo-776656.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        ProjectDos,
     },
     {
-      title: "Project 2",
-      description: "Description for Project 2",
-      backgroundImage:
-        "https://images.pexels.com/photos/1239431/pexels-photo-1239431.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      title: "Codecraft",
+      description: "Proyecto realizado en equipo con la finalidad de ",
+      fecha: "Landing page",
+      backgroundImage: ProjectUno,
+    },
+     {
+      title: "Codecraft",
+      description: "Proyecto realizado en equipo con la finalidad de ",
+      fecha: "Landing page",
+      backgroundImage: ProjectUno,
+    },
+     {
+      title: "Codecraft",
+      description: "Proyecto realizado en equipo con la finalidad de ",
+      fecha: "Landing page",
+      backgroundImage: ProjectUno,
     },
   ];
 
   return (
-    <div id="porfolio" className="flex flex-col justify-center items-center min-h-screen">
-      <h2 className="text-xl lg:text-5xl mb-4">Proyectos</h2>
-      <div className="flex flex-wrap container mx-auto gap-5">
+    <div id="porfolio"  className="flex flex-col justify-center items-cente min-h-screen  ">
+      <h2 className="subtitle text-center">Proyectos</h2>
+      <p  className=" text-md font-light lg:text-2xl text-center mb-12">Explora mis creaciones</p>
+      <div className="flex flex-wrap justify-center items-center  mx-auto gap-6 p-5 lg:p-0 ">
         {projects.map((project, index) => (
           <ProjectsCard
             key={index}
             title={project.title}
             description={project.description}
+            fecha={project.fecha}
             backgroundImage={project.backgroundImage}
           />
         ))}

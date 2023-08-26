@@ -21,7 +21,7 @@ export function ImageWithPopover({ imageUrl, name, username, bio, fecha, ubicati
       <img width='auto' height='auto'
         src={imageUrl}
         alt={name}
-        className="object-cover w-24 h-auto  cursor-pointer"
+        className="object-cover w-16 lg:w-24 mt-10 h-auto  cursor-pointer"
         {...triggers}
       />
       <Popover
@@ -35,7 +35,7 @@ export function ImageWithPopover({ imageUrl, name, username, bio, fecha, ubicati
           </div>
         </PopoverHandler>
         <PopoverContent
-          className="z-50 max-w-[20rem] bg-black "
+          className="z-30 md:max-w-[20rem] w-full border-b-2 backdrop-blur-lg  shadow-md transition-shadow animate-fade-up animate-once animate-duration-500 animate-ease-linear"
           {...triggers}
         >
           {/* Popover Content */}

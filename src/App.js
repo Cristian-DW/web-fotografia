@@ -23,7 +23,7 @@ function App() {
       <Background/>
       <Hero/>
       </header>
-      <main className=' top-main z-20  bg-fondo'>
+      <main className=' top-main md:relative md:top-[70rem]  lg:top-mainz -20  bg-fondo'>
         <About/>
         <Skills/>
         <Education/>

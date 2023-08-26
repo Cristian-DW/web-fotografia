@@ -73,7 +73,7 @@ const Nav = () => {
       {/* Componente del menú desplegable */}
       {isMobileMenuOpen && (
         <div
-          className={`lg:hidden ${mobileMenuClasses} fixed top-16 right-0 w-full h-full bg-fondo z-20`}
+          className={`lg:hidden ${mobileMenuClasses} fixed top-16 right-0 w-full h-full bg-fondo z-99999`}
         >
           <div className="flex flex-col items-center justify-between w-full">
             <a href="#" className="block py-16 text-2xl w-full text-center" aria-current="page">

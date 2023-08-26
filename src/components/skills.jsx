@@ -32,36 +32,36 @@ function Skills() {
   };
 
   return (
-    <div id='skill' className="w- h-20 lg:h-40  bg-fondo2 flex flex-col justify-center items-center  ">
+    <div id='skill' className=" h-20 lg:h-40  bg-fondo2 flex flex-col justify-center items-center  ">
       <div  className='w-1/2 h-40  flex justify-center items-center'>
       {/* Utiliza el componente Slider en lugar de SlickCarousel */}
       <Slider {...settings} className='w-full '>
-      <div  className="flex justify-center items-center h-full ml-3  lg:ml-14"> 
-          <img src={ImgSkill} alt="imag" className=" w-20 lg:w-40" />
+      <div  className="flex justify-center items-center h-full ml-3  md:ml-14"> 
+          <img src={ImgSkill} alt="imag" width="auto" height="auto" className=" w-20 lg:w-40" />
         </div>
-        <div className="flex justify-center items-center h-full ml-3 lg:ml-14"> 
+        <div className="flex justify-center items-center h-full ml-3   md:ml-14"> 
         
-          <img src={ImgSkill2} alt="ima2" className=" w-20 lg:w-40" />
+          <img src={ImgSkill2} alt="ima2" width="auto" height="auto"  className=" w-20 lg:w-40" />
         </div>
-        <div className="flex justify-center items-center h-full ml-3  lg:ml-14"> 
+        <div className="flex justify-center items-center h-full ml-3   md:ml-14"> 
         
-          <img src={ImgSkill3} alt="ima3" className= " w-20 lg:w-40" />
+          <img src={ImgSkill3} alt="ima3" width="auto" height="auto"  className= " w-20 lg:w-40" />
         </div>
-        <div className="flex justify-center items-center h-full ml-3 lg:ml-14"> 
+        <div className="flex justify-center items-center h-full ml-3  md:ml-14"> 
         
-          <img src={ImgSkill4} alt="ima3" className= " w-20 lg:w-40" />
+          <img src={ImgSkill4} alt="ima3" width="auto" height="auto"  className= " w-20 lg:w-40" />
         </div>
-        <div className="flex justify-center items-center h-fullml-3  lg:ml-14"> 
+        <div className="flex justify-center items-center h-fullml-3   md:ml-14"> 
         
-          <img src={ImgSkill5} alt="ima3" className= " w-20 lg:w-40" />
+          <img src={ImgSkill5} alt="ima3" width="auto" height="auto"  className= " w-20 lg:w-40" />
         </div>
-        <div className="flex justify-center items-center h-full ml-3 lg:ml-14"> 
+        <div className="flex justify-center items-center h-full ml-3lg:ml-14"> 
         
-          <img src={ImgSkill7} alt="ima3" className= " w-20 lg:w-40" />
+          <img src={ImgSkill7} alt="ima3" width="auto" height="auto"  className= " w-20 lg:w-40" />
         </div>
-        <div className="flex justify-center items-center h-full ml-3 lg:ml-14"> 
+        <div className="flex justify-center items-center h-full ml-3 md:ml-14"> 
         
-          <img src={ImgSkill6} alt="ima3" className= " w-20 lg:w-40" />
+          <img src={ImgSkill6} alt="ima3" width="auto" height="auto"  className= " w-20 lg:w-40" />
         </div>
       </Slider>
     </div>

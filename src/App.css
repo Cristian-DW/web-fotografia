@@ -19,12 +19,15 @@
   @apply text-3xl mb-20 sm:text-2xl md:text-2xl lg:text-3xl xl:text-5xl  ;
 }
 
+.subtitle{
+  @apply text-3xl lg:text-5xl mb-10;
+}
 
 .button{
   @apply  flex h-12 items-center justify-center overflow-hidden bg-transparent border shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out hover:shadow-white hover:before:h-12 hover:before:w-48;
 }
 
-
+.hover-card{@apply transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out}
 
 .header{
   @apply w-screen h-screen;
