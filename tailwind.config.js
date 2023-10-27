@@ -6,12 +6,12 @@ export const content = [
 export const theme = {
   extend: {
     colors: {
-      fondo: '#060918',
+      fondo: '#080806',
       fondo2: '#6919ff',
       letra: '#fffef9',
     },
     fontFamily: {
-      roboto: ['Roboto Slab'],
+      Audiowide: ['Audiowide'],
     },
     // fontSize:{
     //   tit:'120px',
