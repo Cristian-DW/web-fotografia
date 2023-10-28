@@ -12,6 +12,7 @@ export const theme = {
     },
     fontFamily: {
       Audiowide: ['Audiowide'],
+      roboto: ['Roboto Condensed'],
     },
     // fontSize:{
     //   tit:'120px',
