@@ -8,6 +8,9 @@
   @apply text-xl;
 }
 
+.limited{
+  @apply mx-24
+}
 .nav{
   @apply z-50;
 }
@@ -16,7 +19,7 @@
 }
 
 .title{
-  @apply text-5xl text-center mb-7 sm:text-5xl md:text-7xl lg:text-9xl;
+  @apply text-5xl text-center mb-7 sm:text-5xl md:text-7xl lg:text-[23rem];
 }
 
 .subtitle{
@@ -27,6 +30,7 @@
   @apply  flex h-12 items-center justify-center overflow-hidden bg-transparent border shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out hover:shadow-white hover:before:h-12 hover:before:w-48;
 }
 
+.hover-card{@apply transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out}
 
 .header{
   @apply w-screen h-screen z-0;

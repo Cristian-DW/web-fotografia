@@ -6,7 +6,7 @@ function About() {
   return (
     <div
       id="about"
-      className="w-full p-10 lg:py-44 bg-fondo md:grid grid-cols-5 gap-10 justify-center items-center md:py-4 lg:px-40  lg:min-h-screen"
+      className="w-full p-10 lg:py-44 bg-fondo2 md:grid grid-cols-5 gap-10 justify-center items-center md:py-4 lg:px-40  lg:min-h-screen"
     >
       <div className=" md:col-span-2 md:block xxl:flex justify-center">
     

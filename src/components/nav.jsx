@@ -6,7 +6,7 @@ function Nav() {
 
   return (
     <nav className="bg-transparent backdrop-blur-md  fixed z-50 w-screen  border-b-2 border-white">
-      <div className="mx-24 sm:px-6 lg:px-8">
+      <div className="limited sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 right-0 flex items-center">
         
@@ -16,10 +16,11 @@ function Nav() {
               className="relative inline-flex items-center justify-center rounded-md p-2 text-white hfjhgfhover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
              
               <svg
-                className="block h-6 w-6 "
+                className="block h-10 w-9 "
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor">
+                stroke="currentColor"
+                strokeWidth="3" >
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
               </svg>
             </button>
@@ -27,7 +28,7 @@ function Nav() {
           <div className="flex flex-1 items-center">
             <div className="flex flex-shrink-0 items-start">
               <img
-                className="h-8"
+                className="h-10"
                 src={Logo}
                 alt="Your Company"
               />
