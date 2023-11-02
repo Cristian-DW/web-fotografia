@@ -3,7 +3,7 @@ import Hero from './components/hero';
 import Nav from './components/nav';
 import About from './components/about';
 import ContactForm from './components/contact';
-
+import Services from "./components/services";
 
 
 
@@ -14,8 +14,9 @@ function App() {
       <header className="header fixed top-0 left-0 w-screen "> 
       <Hero/>
       </header>
-      <main className=' top-main md:relative md:top-[70rem]  lg:top-mainz -20  bg-fondo2'>
+      <main className=' top-main md:relative md:top-[70rem]  lg:top-mainz -20  bg-fondo'>
         <About/>
+        <Services/>
         <ContactForm/>
       </main>
     </div>
