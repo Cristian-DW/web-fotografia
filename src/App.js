@@ -1,9 +1,9 @@
 import './App.css'
-import Hero from './components/hero';
-import Nav from './components/nav';
-import About from './components/about';
-import ContactForm from './components/contact';
-import Services from "./components/services";
+import Hero from './components/Hero';
+import Nav from './components/Nav';
+import About from './components/About';
+import ContactForm from './components/Contact';
+import Services from './components/Service';
 
 
 
