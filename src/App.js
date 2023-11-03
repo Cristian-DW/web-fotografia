@@ -1,9 +1,11 @@
 import './App.css'
-import Hero from './components/Hero';
+import About from './components/about';
 import Nav from './components/Nav';
-import About from './components/About';
-import ContactForm from './components/Contact';
-import Services from './components/Service';
+import Hero from './components/hero'
+import ContactForm from './components/contact';
+import Services from './components/service';
+
+
 
 
 
@@ -12,7 +14,7 @@ function App() {
     <div className="App">
       <Nav />
       <header className="header fixed top-0 left-0 w-screen "> 
-      <Hero/>
+        <Hero/>
       </header>
       <main className=' top-main md:relative md:top-[70rem]  lg:top-mainz -20  bg-fondo'>
         <About/>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import Photografer from "../media/hero-photografer.png"
 import Facebook from "../media/icons/🦆 icon _facebook_.svg"
 import Whatsapp from "../media/icons/🦆 icon _whatsapp_.svg"
