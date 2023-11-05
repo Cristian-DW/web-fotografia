@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Hero from './components/hero'
 import ContactForm from './components/contact';
 import Services from './components/service';
+import Gallery from './components/Gallery';
 
 
 
@@ -19,6 +20,7 @@ function App() {
       <main className=' top-main md:relative md:top-[70rem]  lg:top-mainz -20  bg-fondo'>
         <About/>
         <Services/>
+        <Gallery/>
         <ContactForm/>
       </main>
     </div>
