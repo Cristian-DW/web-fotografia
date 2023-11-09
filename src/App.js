@@ -5,6 +5,7 @@ import Hero from './components/hero'
 import ContactForm from './components/contact';
 import Services from './components/service';
 import Gallery from './components/Gallery';
+import Testimonials from './components/Testimonials';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <About/>
         <Services/>
         <Gallery/>
+        <Testimonials/>
         <ContactForm/>
       </main>
     </div>
