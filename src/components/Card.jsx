@@ -5,7 +5,7 @@ const Card = (props) => {
 
 
   return (
-    <div className=" rounded-3xl overflow-hidden shadow-lg bg-white w-1/4  ">
+    <div className=" rounded-3xl overflow-hidden shadow-lg bg-zinc-800 w-1/4  ">
       <img className="w-full" src={props.imgCard} alt="Imagen de la tarjeta" />
       <div className="px-6 py-4">
          <h2 className="font-bold text-2xl text-yellow-500 mb-2 font-Audiowide">{props.titCard}</h2>

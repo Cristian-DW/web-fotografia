@@ -18,13 +18,14 @@ export default function Testimonials() {
             naturalSlideWidth={100}
             isIntrinsicHeight={true}
             totalSlides={5}
+            autoplay= 'true'
           >
-            <h1 className="text-5xl font-bold xl:block hidden leading-tight text-gray-800">
+            <h1 className="text-5xl font-bold  xl:block hidden leading-tight text-white">
               What our customers are
               <br />
               saying
             </h1>
-            <h1 className="text-5xl font-bold xl:hidden block leading-tight lg:leading-10 text-gray-800">
+            <h1 className="text-5xl font-bold xl:hidden block leading-tight lg:leading-10 text-white">
               What our customers are saying
             </h1>
             <Slider>
@@ -46,10 +47,10 @@ export default function Testimonials() {
                     </div>
                     <div className="md:w-1/3 lg:w-1/3 xl:ml-32 md:ml-20 md:mt-0 mt-4 flex flex-col justify-between">
                       <div>
-                        <h1 className="text-2xl font-semibold xl:leading-loose text-gray-800">
+                        <h1 className="text-2xl font-semibold xl:leading-loose text-white">
                           Some of the best work that was done!
                         </h1>
-                        <p className="text-base font-medium leading-6 mt-4 text-gray-600">
+                        <p className="text-base font-medium leading-6 mt-4 text-gray-300">
                           Our core values are at the heart of all that we do.
                           They are integrated into our daily work lives and help
                           us to remember our customers always comes first, the
@@ -57,10 +58,10 @@ export default function Testimonials() {
                         </p>
                       </div>
                       <div className="md:mt-0 mt-8">
-                        <p className="text-base font-medium leading-4 text-gray-800">
+                        <p className="text-base font-medium leading-4 text-gray-500">
                           Anna Smith
                         </p>
-                        <p className="text-base leading-4 mt-2 mb-4 text-gray-600">
+                        <p className="text-base leading-4 mt-2 mb-4 text-gray-400">
                           Senior Web Designer
                         </p>
                       </div>
@@ -69,10 +70,7 @@ export default function Testimonials() {
                 </div>
               </Slide>
               <Slide index={1}>
-                <div
-                  className="flex relative"
-                  style={{ transform: "translateX(0%)" }}
-                >
+              <div className="flex">
                   <div className="mt-14 md:flex">
                     <div className="relative lg:w-1/2 sm:w-96 xl:h-96 h-80">
                       <img
@@ -89,10 +87,10 @@ export default function Testimonials() {
                     </div>
                     <div className="md:w-1/3 lg:w-1/3 xl:ml-32 md:ml-20 md:mt-0 mt-4 flex flex-col justify-between">
                       <div>
-                        <h1 className="text-2xl font-semibold xl:leading-loose text-gray-800">
+                        <h1 className="text-2xl font-semibold xl:leading-loose text-white">
                           Some of the best work that was done!
                         </h1>
-                        <p className="text-base font-medium leading-6 mt-4 text-gray-600">
+                        <p className="text-base font-medium leading-6 mt-4 text-gray-300">
                           Our core values are at the heart of all that we do.
                           They are integrated into our daily work lives and help
                           us to remember our customers always comes first, the
@@ -100,10 +98,10 @@ export default function Testimonials() {
                         </p>
                       </div>
                       <div className="md:mt-0 mt-8">
-                        <p className="text-base font-medium leading-4 text-gray-800">
+                        <p className="text-base font-medium leading-4 text-gray-500">
                           Anna Smith
                         </p>
-                        <p className="text-base leading-4 mt-2 mb-4 text-gray-600">
+                        <p className="text-base leading-4 mt-2 mb-4 text-gray-400">
                           Senior Web Designer
                         </p>
                       </div>
@@ -121,6 +119,7 @@ export default function Testimonials() {
                 <img
                   src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonal-svg2.svg"
                   alt="previous"
+                  className="bg-orange-300  rounded"
                 />
               </ButtonBack>
 
@@ -132,6 +131,7 @@ export default function Testimonials() {
                 <img
                   src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonial-svg3.svg"
                   alt="next"
+                  className="bg-orange-400 rounded"
                 />
               </ButtonNext>
             </div>

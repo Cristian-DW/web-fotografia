@@ -1,8 +1,8 @@
 import React from "react"
 import Photografer from "../media/hero-photographer.png"
-import Facebook from "../media/icons/🦆 icon _facebook_.svg"
-import Whatsapp from "../media/icons/🦆 icon _whatsapp_.svg"
-import Youtube from "../media/icons/🦆 icon _youtube_.svg"
+import Facebook from "../media/icons/icon _facebook_.svg"
+import Whatsapp from "../media/icons/icon _whatsapp_.svg"
+import Youtube from "../media/icons/icon _youtube_.svg"
 import Instagram from "../media/icons/icon_instagram.svg"
 
 

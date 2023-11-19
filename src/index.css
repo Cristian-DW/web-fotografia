@@ -6,6 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Roboto Condensed';
   color:#fffef9 ;
+  overflow-x: hidden;
 }
 
 
