@@ -16,6 +16,7 @@ Bienvenido a Frame Fusion, donde la fotografía es una forma de arte y una poder
 ```bash
 npm install
 ```
+Este comando descarga todas las dependencias en local para que lo puedas ejecutar y modificar
 
 ### Desarrollo
 
