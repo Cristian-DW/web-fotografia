@@ -24,7 +24,7 @@
 }
 
 .subtitle{
-  @apply text-3xl lg:text-5xl mb-10;
+  @apply text-3xl lg:text-5xl mb-12;
 }
 
 .button{
@@ -76,10 +76,10 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px); /* Ajusta esta distancia según tu preferencia */
+    transform: translateY(-10px);
   }
 }
 
 .animate-bounce {
-  animation: bounce 2s infinite;
+  animation: bounce 2.1s infinite;
 }
