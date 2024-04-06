@@ -9,7 +9,6 @@ Bienvenido a Frame Fusion, donde la fotografía es una forma de arte y una poder
 - Tailwind CSS
 - Jest
 
-## Instalación
 
 ### Instalación 
 
