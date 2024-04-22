@@ -7,7 +7,6 @@ Bienvenido a Frame Fusion, donde la fotografía es una forma de arte y una poder
 
 - React
 - Tailwind CSS
-- Jest
 
 
 ### Instalación 
