@@ -4,14 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+/**
+ * Main entry point of the application
+ * 
+ * This file is the main entry point of the React application. It renders the root component
+ * (`App`) into the DOM element with the ID `root`. It also sets up performance measurement 
+ * using `reportWebVitals`.
+ */
+
+// Create a root DOM node for the React application
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Render the main App component within React's StrictMode
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// Start measuring performance in the app
 reportWebVitals();
