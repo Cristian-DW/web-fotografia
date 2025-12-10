@@ -1,57 +1,56 @@
 import React from "react";
 import Card from "./Card";
+// Need to update imports to use different images if available, for now using placeholder logic or same image
 import Img from "../media/logo.png";
+// In a real scenario we would import specific icons/images for each service
 
 /**
- * Componente Services
- * 
- * Este componente renderiza una sección que muestra los servicios ofrecidos por la empresa.
- * Cada servicio se presenta en un componente `Card` que incluye una imagen, un título,
- * una descripción y un botón.
- * 
- * @component
- * @example
- * return (
- *   <Services />
- * )
+ * Services Component
+ * Renders the services section with glassmorphism cards
  */
 function Services() {
+  const services = [
+    {
+      title: 'Digitalización',
+      description: 'Preserva tus recuerdos más preciados. Digitalizamos tus fotografías antiguas con la máxima calidad para que perduren eternamente.',
+      img: Img
+    },
+    {
+      title: 'Sesiones de Estudio',
+      description: 'Retratos profesionales que capturan tu mejor versión. Iluminación experta y dirección artística para resultados impactantes.',
+      img: Img
+    },
+    {
+      title: 'Eventos Sociales',
+      description: 'Cobertura completa de tus momentos especiales. Desde bodas hasta graduaciones, no dejamos escapar ningún detalle importante.',
+      img: Img
+    }
+  ];
+
   return (
-    <>
-      {/* Sección de servicios con estilo flex para centrar el contenido */}
-      <section id="services" className="w-screen min-h-screen flex flex-col items-center justify-center">
-        {/* Título de la sección */}
-        <h2 className="text-5xl text-center mb-44 font-Audiowide">Servicios</h2>
-        
-        {/* Contenedor de las tarjetas de servicios */}
-        <div className="w-screen flex justify-around items-center">
-          
-          {/* Tarjeta de servicio: Digitalización */}
-          <Card 
-            imgCard={Img}
-            titCard='Digitalización'
-            contentCard='Podemos ayudarte en la digitalización de tus fotografías para que perduren en el tiempo'
-            contentButton='Ver Más'
-          />
-          
-          {/* Tarjeta de servicio: Digitalización */}
-          <Card 
-            imgCard={Img}
-            titCard='Digitalización'
-            contentCard='Podemos ayudarte en la digitalización de tus fotografías para que perduren en el tiempo'
-            contentButton='Ver Más'
-          />
-          
-          {/* Tarjeta de servicio: Digitalización */}
-          <Card 
-            imgCard={Img}
-            titCard='Digitalización'
-            contentCard='Podemos ayudarte en la digitalización de tus fotografías para que perduren en el tiempo'
-            contentButton='Ver Más'
-          />
+    <section id="services" className="section-padding relative bg-fondo2 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-black/50 to-transparent z-0"></div>
+
+      <div className="limited relative z-10 w-full">
+        <h2 className="title">Nuestros Servicios</h2>
+        <p className="text-center text-gray-400 max-w-2xl mx-auto mb-20 font-inter text-lg">
+          Ofrecemos una gama completa de soluciones fotográficas diseñadas para satisfacer tus necesidades creativas y profesionales.
+        </p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <Card
+              key={index}
+              imgCard={service.img}
+              titCard={service.title}
+              contentCard={service.description}
+              contentButton='Ver Detalles'
+            />
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 

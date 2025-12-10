@@ -1,39 +1,32 @@
 import React from "react";
 
 /**
- * Card component renders a stylized card with an image, title, content, and an optional button.
- * 
- * @component
- * @param {Object} props - Component properties.
- * @param {string} props.imgCard - URL of the image to be displayed on the card.
- * @param {string} props.titCard - Title of the card.
- * @param {string} props.contentCard - Content or description text of the card.
- * @example
- * return (
- *   <Card 
- *     imgCard="https://example.com/image.jpg" 
- *     titCard="Card Title" 
- *     contentCard="This is the card content."
- *   />
- * )
+ * Card component renders a stylized card with glassmorphism design
  */
-const Card = (props) => {
+const Card = ({ imgCard, titCard, contentCard, contentButton }) => {
   return (
-    <div className="rounded-3xl overflow-hidden shadow-lg bg-zinc-800 w-1/4">
-      {/* Image section */}
-      <img className="w-full" src={props.imgCard} alt="Imagen de la tarjeta" />
-      <div className="px-6 py-4">
-        {/* Title section */}
-        <h2 className="font-bold text-2xl text-yellow-500 mb-2 font-Audiowide">{props.titCard}</h2>
-        {/* Content section */}
-        <p className="text-gray-700">
-          {props.contentCard}
+    <div className="glass-card rounded-2xl overflow-hidden p-6 transition-all duration-500 hover:transform hover:scale-105 hover:bg-white/10 group h-full flex flex-col">
+      {/* Icon/Image section */}
+      <div className="w-16 h-16 mb-6 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/40 transition-colors duration-300">
+        {/* Placeholder for icon if image is used as icon, otherwise can be adjusted */}
+        <img className="w-8 h-8 opacity-80 group-hover:opacity-100 transition-opacity" src={imgCard} alt={titCard} />
+      </div>
+
+      {/* Content section */}
+      <div className="flex-grow">
+        <h3 className="text-2xl font-playfair font-bold text-white mb-4 group-hover:text-primary transition-colors">{titCard}</h3>
+        <p className="text-gray-400 font-inter leading-relaxed mb-6 group-hover:text-gray-300 transition-colors">
+          {contentCard}
         </p>
-        {/* Button section, currently hidden */}
-        <button className="hidden button bg-gray-400 text-black before:bg-orange-500 hover:text-orange-200 mt-10 w-48">
-          <span className="relative z-10">
-            <a href="#porfolio">Ver Más</a>
-          </span>
+      </div>
+
+      {/* Button section */}
+      <div className="mt-auto pt-4 border-t border-white/10">
+        <button className="flex items-center text-sm font-bold text-primary tracking-wider uppercase group-hover:text-white transition-colors">
+          {contentButton || 'Ver Más'}
+          <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
         </button>
       </div>
     </div>

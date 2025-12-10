@@ -27,7 +27,7 @@ function Hero() {
           <img className="h-[80vh]" src={Photografer} alt="Photographer" />
         </div>
         {/* Title */}
-        <h1 className="title mb-3 animate-fade-down animate-once animate-delay-[900ms] animate-ease-linear font-Audiowide">
+        <h1 className="title mb-3 text-9xl text-white animate-fade-down animate-once animate-delay-[900ms] animate-ease-linear font-Audiowide">
           FRAME FUSION
         </h1>
       </div>

@@ -10,157 +10,115 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 
 /**
  * Testimonials Component
- * 
- * This component renders a section displaying customer testimonials using a carousel.
- * It utilizes the `pure-react-carousel` library to create a slider with multiple slides.
- * Each slide contains a customer testimonial, including an image, title, description, 
- * and customer details.
- * 
- * @component
- * @example
- * return (
- *   <Testimonials />
- * )
+ * Renders customer testimonials with premium carousel design
  */
 export default function Testimonials() {
+  const testimonials = [
+    {
+      text: "Frame Fusion capturó la esencia mágica de nuestra boda. Las fotos son simplemente impresionantes y nos hacen revivir ese día cada vez que las vemos.",
+      name: "Ana García",
+      role: "Novia Feliz",
+      image: "https://i.ibb.co/4g1D9cv/imgslider1.png"
+    },
+    {
+      text: "Profesionalismo puro. La sesión de fotos corporativa elevó la imagen de nuestra empresa a otro nivel. Altamente recomendados.",
+      name: "Carlos Rodríguez",
+      role: "CEO, TechStart",
+      image: "https://i.ibb.co/4g1D9cv/imgslider1.png"
+    },
+    {
+      text: "Tienen un ojo increíble para los detalles. Mis fotos de retrato salieron mejor de lo que jamás imaginé. ¡Gracias por hacerme sentir tan cómoda!",
+      name: "Laura Martínez",
+      role: "Modelo",
+      image: "https://i.ibb.co/4g1D9cv/imgslider1.png"
+    }
+  ];
+
   return (
-    <>
-      {/* Section containing the testimonials carousel */}
-      <section>
-        <div className="flex items-center justify-between h-screen w-full">
-          <div className="xl:px-20 px-8 py-20 2xl:mx-auto 2xl:container relative z-40">
+    <section id="testimonials" className="section-padding bg-fondo2 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute -left-20 top-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px]"></div>
+
+      <div className="limited relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[600px]">
+
+          {/* Header Section */}
+          <div>
+            <h3 className="text-sm font-bold tracking-[0.2em] text-primary mb-4 animate-fade-in">TESTIMONIOS</h3>
+            <h2 className="title !text-left !mb-8 !lg:text-6xl">
+              Lo que dicen <br />
+              <span className="text-gradient-gold">nuestros clientes</span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-md mb-12 font-inter leading-relaxed">
+              La satisfacción de quienes confían en nosotros es nuestra mayor recompensa. Historias reales de experiencias inolvidables.
+            </p>
+
+            {/* Custom Navigation Helper - Visual Only */}
+            <div className="hidden lg:flex gap-4">
+              <div className="w-12 h-1 bg-primary rounded-full"></div>
+              <div className="w-4 h-1 bg-gray-600 rounded-full"></div>
+              <div className="w-4 h-1 bg-gray-600 rounded-full"></div>
+            </div>
+          </div>
+
+          {/* Carousel Section */}
+          <div className="glass-card p-8 md:p-12 rounded-3xl relative">
+            <div className="absolute top-8 right-8 text-primary opacity-20">
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.017 21L14.017 18C14.017 16.0547 14.5029 14.5516 15.4746 13.4912C16.4463 12.4316 17.6533 11.5977 19.0957 10.9883L19.7822 10.666L19.7822 7.6416C19.0303 7.61816 18.2812 7.42676 17.5352 7.06836C16.7891 6.70996 16.1553 6.22363 15.6309 5.60938L14.8818 4.79395H10.1504V10.2295C10.1504 12.4492 10.6543 14.6592 11.6621 16.8584C12.6709 19.0576 13.4561 20.4385 14.017 21ZM4.97266 21L4.97266 18C4.97266 16.0547 5.45898 14.5516 6.43066 13.4912C7.40234 12.4316 8.60938 11.5977 10.0518 10.9883L10.7383 10.666L10.7383 7.6416C9.98633 7.61816 9.2373 7.42676 8.49023 7.06836C7.74512 6.70996 7.11035 6.22363 6.58691 5.60938L5.83789 4.79395H1.10645V10.2295C1.10645 12.4492 1.61035 14.6592 2.61816 16.8584C3.62695 19.0576 4.41211 20.4385 4.97266 21Z" />
+              </svg>
+            </div>
+
             <CarouselProvider
               naturalSlideWidth={100}
               isIntrinsicHeight={true}
-              totalSlides={5}
-              autoplay='true'
+              totalSlides={testimonials.length}
+              isPlaying={true}
+              interval={5000}
             >
-              {/* Header text for the testimonials section */}
-              <h1 className="text-5xl font-bold xl:block hidden leading-tight text-white">
-                What our customers are
-                <br />
-                saying
-              </h1>
-              <h1 className="text-5xl font-bold xl:hidden block leading-tight lg:leading-10 text-white">
-                What our customers are saying
-              </h1>
-              
-              {/* Slider containing the slides */}
               <Slider>
-                <Slide index={0} tabIndex="null">
-                  <div className="flex">
-                    <div className="mt-14 md:flex">
-                      <div className="relative lg:w-1/2 sm:w-96 xl:h-96 h-80">
-                        <img
-                          src="https://i.ibb.co/4g1D9cv/imgslider1.png"
-                          alt="image of profile"
-                          className="w-full h-full flex-shrink-0 object-fit object-cover shadow-lg rounded"
-                        />
-                        <div className="w-32 md:flex hidden items-center justify-center absolute top-0 -mr-16 -mt-14 right-0 h-32 bg-indigo-100 rounded-full">
+                {testimonials.map((testimonial, index) => (
+                  <Slide index={index} key={index}>
+                    <div className="flex flex-col h-full justify-between py-4">
+                      <p className="text-xl md:text-2xl font-playfair italic text-gray-200 leading-relaxed mb-8">
+                        "{testimonial.text}"
+                      </p>
+
+                      <div className="flex items-center gap-4">
+                        <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary p-1">
                           <img
-                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonial-svg1.svg"
-                            alt="commas"
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            className="w-full h-full rounded-full object-cover"
                           />
                         </div>
-                      </div>
-                      <div className="md:w-1/3 lg:w-1/3 xl:ml-32 md:ml-20 md:mt-0 mt-4 flex flex-col justify-between">
                         <div>
-                          <h1 className="text-2xl font-semibold xl:leading-loose text-white">
-                            Some of the best work that was done!
-                          </h1>
-                          <p className="text-base font-medium leading-6 mt-4 text-gray-300">
-                            Our core values are at the heart of all that we do.
-                            They are integrated into our daily work lives and help
-                            us to remember our customers always comes first, the
-                            last thank you should always comes from us.
-                          </p>
-                        </div>
-                        <div className="md:mt-0 mt-8">
-                          <p className="text-base font-medium leading-4 text-gray-500">
-                            Anna Smith
-                          </p>
-                          <p className="text-base leading-4 mt-2 mb-4 text-gray-400">
-                            Senior Web Designer
-                          </p>
+                          <p className="text-white font-bold text-lg">{testimonial.name}</p>
+                          <p className="text-primary text-sm">{testimonial.role}</p>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </Slide>
-                
-                {/* Second slide */}
-                <Slide index={1}>
-                  <div className="flex">
-                    <div className="mt-14 md:flex">
-                      <div className="relative lg:w-1/2 sm:w-96 xl:h-96 h-80">
-                        <img
-                          src="https://i.ibb.co/4g1D9cv/imgslider1.png"
-                          alt="image of profile"
-                          className="w-full h-full flex-shrink-0 object-fit object-cover shadow-lg rounded"
-                        />
-                        <div className="w-32 md:flex hidden items-center justify-center absolute top-0 -mr-16 -mt-14 right-0 h-32 bg-indigo-100 rounded-full">
-                          <img
-                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonial-svg1.svg"
-                            alt="commas"
-                          />
-                        </div>
-                      </div>
-                      <div className="md:w-1/3 lg:w-1/3 xl:ml-32 md:ml-20 md:mt-0 mt-4 flex flex-col justify-between">
-                        <div>
-                          <h1 className="text-2xl font-semibold xl:leading-loose text-white">
-                            Some of the best work that was done!
-                          </h1>
-                          <p className="text-base font-medium leading-6 mt-4 text-gray-300">
-                            Our core values are at the heart of all that we do.
-                            They are integrated into our daily work lives and help
-                            us to remember our customers always comes first, the
-                            last thank you should always comes from us.
-                          </p>
-                        </div>
-                        <div className="md:mt-0 mt-8">
-                          <p className="text-base font-medium leading-4 text-gray-500">
-                            Anna Smith
-                          </p>
-                          <p className="text-base leading-4 mt-2 mb-4 text-gray-400">
-                            Senior Web Designer
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Slide>
+                  </Slide>
+                ))}
               </Slider>
-              
-              {/* Navigation buttons for the carousel */}
-              <div className="flex items-center mt-8">
-                <ButtonBack
-                  className="cursor-pointer"
-                  role="button"
-                  aria-label="previous slide"
-                >
-                  <img
-                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonal-svg2.svg"
-                    alt="previous"
-                    className="bg-orange-300 rounded"
-                  />
+
+              <div className="flex items-center gap-4 mt-8 pt-8 border-t border-white/10">
+                <ButtonBack className="p-3 rounded-full border border-white/20 text-white hover:bg-primary hover:border-primary transition-all duration-300">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M15 19l-7-7 7-7" />
+                  </svg>
                 </ButtonBack>
-                <ButtonNext
-                  role="button"
-                  aria-label="next slide"
-                  className="cursor-pointer ml-2"
-                >
-                  <img
-                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonial-svg3.svg"
-                    alt="next"
-                    className="bg-orange-400 rounded"
-                  />
+                <ButtonNext className="p-3 rounded-full border border-white/20 text-white hover:bg-primary hover:border-primary transition-all duration-300">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 5l7 7-7 7" />
+                  </svg>
                 </ButtonNext>
               </div>
             </CarouselProvider>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 

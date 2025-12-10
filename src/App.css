@@ -1,80 +1,150 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Roboto+Condensed:ital,wght@0,300;0,400;1,400&display=swap');
 
-
-.font-nav{
-  @apply text-xl;
+html {
+  scroll-behavior: smooth;
 }
 
-.limited{
-  @apply mx-24
-}
-.nav{
-  @apply z-50;
-}
-.button-hover{
-  @apply transition-transform  duration-500 transform hover:scale-90;
+body {
+  @apply bg-fondo text-letra font-inter overflow-x-hidden;
 }
 
-.title{
-  @apply text-5xl text-center mb-7 sm:text-5xl md:text-7xl lg:text-[23rem];
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.subtitle{
-  @apply text-3xl lg:text-5xl mb-12;
+::-webkit-scrollbar-track {
+  @apply bg-fondo;
 }
 
-.button{
-  @apply  flex h-12 items-center justify-center rounded-3xl  border shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out hover:shadow-white hover:before:h-12 hover:before:w-48 before:rounded-3xl;
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-full;
 }
 
-.hover-card{@apply transition-all before:absolute before:h-0 before:w-0 before:bg-white  before:text-opacity-10 before:duration-500 before:ease-out}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
 
-.header{
-  @apply w-screen h-screen z-0;
+.glass-nav {
+  @apply backdrop-blur-md bg-black/30 border-b border-white/10;
+}
+
+.glass-card {
+  @apply backdrop-blur-md bg-white/5 border border-white/10 shadow-xl;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-400;
+}
+
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#FDC830] to-[#D4AF37];
+}
+
+.font-nav {
+  @apply text-xl font-light tracking-wide;
+}
+
+.limited {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.nav {
+  @apply fixed top-0 w-full z-50 transition-all duration-300;
+}
+
+.header {
+  @apply w-screen h-screen relative overflow-hidden;
+}
+
+.button-hover {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20;
+}
+
+.title {
+  @apply text-5xl md:text-7xl lg:text-9xl font-audiowide text-center mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500;
+}
+
+.subtitle {
+  @apply text-3xl lg:text-5xl mb-12 font-playfair font-bold text-center;
+}
+
+.section-padding {
+  @apply py-20 lg:py-32;
 }
 
 
 /* src/styles.css */
 @keyframes animate {
-  0%{
-      transform: translateY(10px) rotate(0deg);
-      opacity: 1;
-      border-radius: 0;
+  0% {
+    transform: translateY(10px) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
   }
-  100%{
-      transform: translateY(-1000px) rotate(720deg);
-      opacity: 0;
-      border-radius: 50%;
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
   }
 }
 
 
 
 @keyframes project-load-animation {
-  0% {width: 0;}
-	15% {width: 0vw;}
-  25% {width: 0vw;}
-	50% {width: 35vw;}
-	65% {width: 50vw;}
-	75% {width: 75vw;}
-	100% {width: 100vw;}
+  0% {
+    width: 0;
+  }
+
+  15% {
+    width: 0vw;
+  }
+
+  25% {
+    width: 0vw;
+  }
+
+  50% {
+    width: 35vw;
+  }
+
+  65% {
+    width: 50vw;
+  }
+
+  75% {
+    width: 75vw;
+  }
+
+  100% {
+    width: 100vw;
+  }
 }
 
 
 @keyframes project-infos-animation {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
