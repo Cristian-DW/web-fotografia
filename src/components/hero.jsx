@@ -20,8 +20,8 @@ import Instagram from "../media/icons/icon_instagram.svg";
  */
 function Hero() {
   return (
-    <div className="fixed left-0 top-0 bg-fondo w-screen h-screen">
-      <div className="container relative mx-auto z-10 flex flex-col items-center justify-start mt-20">
+    <div className="fixed bg-fondo min-w-full h-full">
+      <div className="container relative min-h-[80vh] mx-auto z-10 flex flex-col items-center justify-start mt-20">
         <div className="absolute top-auto left-auto z-40">
           {/* Photographer image */}
           <img className="h-[80vh]" src={Photografer} alt="Photographer" />

@@ -46,6 +46,7 @@ function About() {
                 className="w-full h-[600px] object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
                 src={imgAbout}
                 alt="About Frame Fusion"
+                loading="lazy"
               />
             </div>
           </div>
