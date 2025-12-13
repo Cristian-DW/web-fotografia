@@ -64,7 +64,7 @@ export const storage = {
         const fileExt = file.name.split('.').pop();
         const fileName = `${userId}/avatar.${fileExt}`;
 
-        const { data, error } = await supabase.storage
+        const { error } = await supabase.storage
             .from('avatars')
             .upload(fileName, file, { upsert: true });
 
@@ -81,7 +81,7 @@ export const storage = {
         const fileExt = file.name.split('.').pop();
         const fileName = `${userId}/${Date.now()}.${fileExt}`;
 
-        const { data, error } = await supabase.storage
+        const { error } = await supabase.storage
             .from('posts')
             .upload(fileName, file);
 
