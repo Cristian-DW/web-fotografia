@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
 import './App.css';
@@ -10,11 +10,11 @@ import Sidebar from './components/layout/Sidebar';
 import BottomNav from './components/layout/BottomNav';
 
 // Auth
-import AuthModal from './components/auth/AuthModal';
 import { useAuthStore } from './stores/authStore';
 import { auth } from './lib/supabase';
 
 // Pages
+import Landing from './pages/Landing';
 import Home from './pages/Home';
 import Explore from './pages/Explore';
 import Profile from './pages/Profile';
@@ -24,6 +24,38 @@ import Settings from './pages/Settings';
 // Components
 import { PageLoader } from './components/shared/Loader';
 import CreatePost from './components/feed/CreatePost';
+
+// Layout wrapper for authenticated pages
+function AuthenticatedLayout({ children }) {
+  const { user } = useAuthStore();
+
+  if (!user) {
+    return <Navigate to="/" replace />;
+  }
+
+  return (
+    <>
+      <Navbar />
+      <Sidebar />
+      <main className="main-content">
+        {children}
+      </main>
+      <BottomNav />
+      <CreatePost />
+    </>
+  );
+}
+
+// Public layout wrapper
+function PublicLayout({ children }) {
+  const { user } = useAuthStore();
+
+  if (user) {
+    return <Navigate to="/feed" replace />;
+  }
+
+  return children;
+}
 
 function App() {
   const { initialize, loading, setUser, setProfile } = useAuthStore();
@@ -79,27 +111,41 @@ function App() {
           }}
         />
 
-        {/* Navigation */}
-        <Navbar />
-        <Sidebar />
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={
+            <PublicLayout>
+              <Landing />
+            </PublicLayout>
+          } />
 
-        {/* Main Content */}
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/:username" element={<Profile />} />
-          </Routes>
-        </main>
-
-        {/* Mobile Bottom Nav */}
-        <BottomNav />
-
-        {/* Modals */}
-        <AuthModal />
-        <CreatePost />
+          {/* Authenticated Routes */}
+          <Route path="/feed" element={
+            <AuthenticatedLayout>
+              <Home />
+            </AuthenticatedLayout>
+          } />
+          <Route path="/explore" element={
+            <AuthenticatedLayout>
+              <Explore />
+            </AuthenticatedLayout>
+          } />
+          <Route path="/messages" element={
+            <AuthenticatedLayout>
+              <Messages />
+            </AuthenticatedLayout>
+          } />
+          <Route path="/settings" element={
+            <AuthenticatedLayout>
+              <Settings />
+            </AuthenticatedLayout>
+          } />
+          <Route path="/:username" element={
+            <AuthenticatedLayout>
+              <Profile />
+            </AuthenticatedLayout>
+          } />
+        </Routes>
       </div>
     </Router>
   );

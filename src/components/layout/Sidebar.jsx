@@ -15,7 +15,7 @@ export default function Sidebar() {
     };
 
     const navItems = [
-        { path: '/', icon: 'home', label: 'Inicio' },
+        { path: '/feed', icon: 'home', label: 'Inicio' },
         { path: '/explore', icon: 'explore', label: 'Explorar' },
         { path: '/messages', icon: 'messages', label: 'Mensajes' },
         { path: '/notifications', icon: 'notifications', label: 'Notificaciones' },
@@ -54,9 +54,9 @@ export default function Sidebar() {
             {/* Sidebar */}
             <aside className={`sidebar ${sidebarOpen ? 'sidebar--open' : ''}`}>
                 <div className="sidebar__header">
-                    <Link to="/" className="sidebar__logo" onClick={closeSidebar}>
-                        <span className="sidebar__logo-icon">📸</span>
-                        <span className="sidebar__logo-text">FrameFusion</span>
+                    <Link to="/feed" className="sidebar__logo" onClick={closeSidebar}>
+                        <span className="sidebar__logo-icon">✦</span>
+                        <span className="sidebar__logo-text">Lumina</span>
                     </Link>
                 </div>
 

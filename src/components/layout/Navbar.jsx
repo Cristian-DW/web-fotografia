@@ -19,10 +19,9 @@ export default function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar__container">
-                {/* Logo */}
-                <Link to="/" className="navbar__logo">
-                    <span className="navbar__logo-icon">📸</span>
-                    <span className="navbar__logo-text">FrameFusion</span>
+                <Link to="/feed" className="navbar__logo">
+                    <span className="navbar__logo-icon">✦</span>
+                    <span className="navbar__logo-text">Lumina</span>
                 </Link>
 
                 {/* Search Bar - Desktop */}
@@ -44,8 +43,8 @@ export default function Navbar() {
                     {user ? (
                         <>
                             {/* Home */}
-                            <Link to="/" className={`navbar__action ${location.pathname === '/' ? 'navbar__action--active' : ''}`}>
-                                <svg className="w-6 h-6" fill={location.pathname === '/' ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor">
+                            <Link to="/feed" className={`navbar__action ${location.pathname === '/feed' ? 'navbar__action--active' : ''}`}>
+                                <svg className="w-6 h-6" fill={location.pathname === '/feed' ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                 </svg>
                             </Link>
