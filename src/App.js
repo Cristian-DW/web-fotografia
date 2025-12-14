@@ -11,7 +11,7 @@ import BottomNav from './components/layout/BottomNav';
 
 // Auth
 import { useAuthStore } from './stores/authStore';
-import { auth } from './lib/supabase';
+import { supabase } from './lib/supabase';
 
 // Pages
 import Landing from './pages/Landing';
@@ -58,25 +58,53 @@ function PublicLayout({ children }) {
 }
 
 function App() {
-  const { initialize, loading, setUser, setProfile } = useAuthStore();
+  const { loading, setUser, setProfile, setLoading, fetchOrCreateProfile } = useAuthStore();
 
   useEffect(() => {
-    // Initialize auth state
-    initialize();
+    console.log('🚀 App mounting, setting up auth...');
+
+    // Get initial session
+    const getInitialSession = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        console.log('📋 Initial session:', session ? 'Found' : 'None');
+
+        if (session?.user) {
+          setUser(session.user);
+          const profile = await fetchOrCreateProfile(session.user);
+          setProfile(profile);
+        }
+      } catch (error) {
+        console.error('❌ Error getting session:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getInitialSession();
 
     // Listen for auth changes
-    const { data: { subscription } } = auth.onAuthStateChange(async (event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log('🔔 Auth event:', event);
+
       if (event === 'SIGNED_IN' && session?.user) {
         setUser(session.user);
-        // Profile will be fetched by the store
+        const profile = await fetchOrCreateProfile(session.user);
+        setProfile(profile);
+        setLoading(false);
       } else if (event === 'SIGNED_OUT') {
         setUser(null);
         setProfile(null);
+        setLoading(false);
+      } else if (event === 'TOKEN_REFRESHED' && session?.user) {
+        setUser(session.user);
       }
     });
 
-    return () => subscription?.unsubscribe();
-  }, [initialize, setUser, setProfile]);
+    return () => {
+      subscription?.unsubscribe();
+    };
+  }, []); // Empty deps - only run once on mount
 
   if (loading) {
     return <PageLoader />;
