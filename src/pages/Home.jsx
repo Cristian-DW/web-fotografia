@@ -125,7 +125,7 @@ export default function Home() {
                             <a href="#">Privacidad</a>
                             <a href="#">Condiciones</a>
                         </nav>
-                        <p className="copyright">© 2024 LUMINA FROM META</p>
+                        <p className="copyright">© 2024 LUMINA</p>
                     </div>
                 </aside>
             )}

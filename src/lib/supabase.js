@@ -267,19 +267,28 @@ export const db = {
         const { data, error } = await supabase
             .from('follows')
             .select(`
-                follower:follower_id (id, username, display_name, avatar_url)
+                follower:profiles!follows_follower_id_fkey (id, username, display_name, avatar_url)
             `)
             .eq('following_id', userId);
-        return { data, error };
+        return { data: data?.map(f => f.follower), error };
     },
 
     getFollowing: async (userId) => {
         const { data, error } = await supabase
             .from('follows')
             .select(`
-                following:following_id (id, username, display_name, avatar_url)
+                following:profiles!follows_following_id_fkey (id, username, display_name, avatar_url)
             `)
             .eq('follower_id', userId);
+        return { data: data?.map(f => f.following), error };
+    },
+
+    checkFollow: async (followerId, followingId) => {
+        const { data, error } = await supabase
+            .from('follows')
+            .select('*')
+            .match({ follower_id: followerId, following_id: followingId })
+            .single();
         return { data, error };
     },
 
