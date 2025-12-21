@@ -201,9 +201,9 @@ export const db = {
             .from('comments')
             .insert({ user_id: userId, post_id: postId, content })
             .select(`
-        *,
-        profiles:user_id (id, username, display_name, avatar_url)
-      `)
+                *,
+                profiles:user_id (username, avatar_url)
+            `)
             .single();
         return { data, error };
     },
@@ -212,9 +212,9 @@ export const db = {
         const { data, error } = await supabase
             .from('comments')
             .select(`
-        *,
-        profiles:user_id (id, username, display_name, avatar_url)
-      `)
+                *,
+                profiles:user_id (id, username, display_name, avatar_url)
+            `)
             .eq('post_id', postId)
             .order('created_at', { ascending: true });
         return { data, error };
@@ -225,12 +225,13 @@ export const db = {
         return { error };
     },
 
-    // Follows
+    // Follows & Suggestions
     followUser: async (followerId, followingId) => {
         const { data, error } = await supabase
             .from('follows')
             .insert({ follower_id: followerId, following_id: followingId })
-            .select();
+            .select()
+            .single();
         return { data, error };
     },
 
@@ -238,17 +239,36 @@ export const db = {
         const { error } = await supabase
             .from('follows')
             .delete()
-            .eq('follower_id', followerId)
-            .eq('following_id', followingId);
+            .match({ follower_id: followerId, following_id: followingId });
         return { error };
+    },
+
+    getSuggestedUsers: async (userId, limit = 5) => {
+        // Get IDs of users already followed
+        const { data: following } = await supabase
+            .from('follows')
+            .select('following_id')
+            .eq('follower_id', userId);
+
+        const followingIds = following?.map(f => f.following_id) || [];
+        followingIds.push(userId); // Exclude self
+
+        // Get random profiles not in following list
+        const { data, error } = await supabase
+            .from('profiles')
+            .select('*')
+            .not('id', 'in', followingIds)
+            .limit(limit);
+
+        return { data, error };
     },
 
     getFollowers: async (userId) => {
         const { data, error } = await supabase
             .from('follows')
             .select(`
-        follower:follower_id (id, username, display_name, avatar_url)
-      `)
+                follower:follower_id (id, username, display_name, avatar_url)
+            `)
             .eq('following_id', userId);
         return { data, error };
     },
@@ -257,8 +277,8 @@ export const db = {
         const { data, error } = await supabase
             .from('follows')
             .select(`
-        following:following_id (id, username, display_name, avatar_url)
-      `)
+                following:following_id (id, username, display_name, avatar_url)
+            `)
             .eq('follower_id', userId);
         return { data, error };
     },
@@ -278,10 +298,10 @@ export const db = {
         const { data, error } = await supabase
             .from('notifications')
             .select(`
-        *,
-        actor:actor_id (id, username, display_name, avatar_url),
-        post:post_id (id, image_url)
-      `)
+                *,
+                actor:actor_id (id, username, display_name, avatar_url),
+                post:post_id (id, image_url)
+            `)
             .eq('user_id', userId)
             .order('created_at', { ascending: false })
             .limit(50);
@@ -309,17 +329,17 @@ export const db = {
         const { data, error } = await supabase
             .from('conversation_participants')
             .select(`
-        conversation:conversation_id (
-          id,
-          created_at,
-          messages (
-            id,
-            content,
-            sender_id,
-            created_at
-          )
-        )
-      `)
+                conversation:conversation_id (
+                    id,
+                    created_at,
+                    messages (
+                        id,
+                        content,
+                        sender_id,
+                        created_at
+                    )
+                )
+            `)
             .eq('user_id', userId);
         return { data, error };
     },
@@ -328,9 +348,9 @@ export const db = {
         const { data, error } = await supabase
             .from('messages')
             .select(`
-        *,
-        sender:sender_id (id, username, display_name, avatar_url)
-      `)
+                *,
+                sender:sender_id (id, username, display_name, avatar_url)
+            `)
             .eq('conversation_id', conversationId)
             .order('created_at', { ascending: true });
         return { data, error };

@@ -87,17 +87,21 @@ function App() {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('🔔 Auth event:', event);
 
-      if (event === 'SIGNED_IN' && session?.user) {
-        setUser(session.user);
-        const profile = await fetchOrCreateProfile(session.user);
-        setProfile(profile);
+      try {
+        if (event === 'SIGNED_IN' && session?.user) {
+          setUser(session.user);
+          const profile = await fetchOrCreateProfile(session.user);
+          setProfile(profile);
+        } else if (event === 'SIGNED_OUT') {
+          setUser(null);
+          setProfile(null);
+        } else if (event === 'TOKEN_REFRESHED' && session?.user) {
+          setUser(session.user);
+        }
+      } catch (error) {
+        console.error('❌ Error handling auth event:', error);
+      } finally {
         setLoading(false);
-      } else if (event === 'SIGNED_OUT') {
-        setUser(null);
-        setProfile(null);
-        setLoading(false);
-      } else if (event === 'TOKEN_REFRESHED' && session?.user) {
-        setUser(session.user);
       }
     });
 
