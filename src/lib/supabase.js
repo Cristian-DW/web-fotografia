@@ -257,7 +257,7 @@ export const db = {
         const { data, error } = await supabase
             .from('profiles')
             .select('*')
-            .not('id', 'in', followingIds)
+            .not('id', 'in', `(${followingIds.join(',')})`)
             .limit(limit);
 
         return { data, error };
