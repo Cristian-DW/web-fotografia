@@ -21,6 +21,20 @@ export default function PostCard({ post, onUpdate }) {
     const [loadingComments, setLoadingComments] = useState(false);
     const [submittingComment, setSubmittingComment] = useState(false);
 
+    // Check if post is saved on mount
+    React.useEffect(() => {
+        const checkSavedStatus = async () => {
+            if (!user) return;
+            try {
+                const { isSaved } = await db.checkIfPostSaved(user.id, post.id);
+                setSaved(isSaved);
+            } catch (error) {
+                console.error('Error checking saved status:', error);
+            }
+        };
+        checkSavedStatus();
+    }, [user, post.id]);
+
     const handleLike = async () => {
         if (!user) {
             toast.error('Inicia sesión para reaccionar');
@@ -122,6 +136,49 @@ export default function PostCard({ post, onUpdate }) {
         }
     };
 
+    const handleShare = async () => {
+        try {
+            if (navigator.share) {
+                await navigator.share({
+                    title: `Post de ${post.profiles?.username}`,
+                    text: post.caption || 'Mira este post en Lumina',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback: copy to clipboard
+                await navigator.clipboard.writeText(window.location.href);
+                toast.success('Enlace copiado al portapapeles');
+            }
+        } catch (error) {
+            // User cancelled or error occurred
+            if (error.name !== 'AbortError') {
+                console.error('Error sharing:', error);
+            }
+        }
+    };
+
+    const handleSaveToggle = async () => {
+        if (!user) {
+            toast.error('Inicia sesión para guardar posts');
+            return;
+        }
+
+        try {
+            if (saved) {
+                await db.unsavePost(user.id, post.id);
+                setSaved(false);
+                toast.success('Post eliminado de guardados');
+            } else {
+                await db.savePost(user.id, post.id);
+                setSaved(true);
+                toast.success('Post guardado');
+            }
+        } catch (error) {
+            console.error('Error toggling save:', error);
+            toast.error('Error al guardar post');
+        }
+    };
+
     const timeAgo = formatDistanceToNow(new Date(post.created_at), {
         addSuffix: false,
         locale: es
@@ -144,11 +201,6 @@ export default function PostCard({ post, onUpdate }) {
                         )}
                     </div>
                 </Link>
-                <button className="post-card__menu-btn">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                    </svg>
-                </button>
             </header>
 
             {/* Image */}
@@ -209,7 +261,7 @@ export default function PostCard({ post, onUpdate }) {
                     </button>
 
                     {/* Share button */}
-                    <button className="post-card__action-btn">
+                    <button className="post-card__action-btn" onClick={handleShare}>
                         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                         </svg>
@@ -219,7 +271,7 @@ export default function PostCard({ post, onUpdate }) {
                 {/* Save button */}
                 <button
                     className={`post-card__action-btn ${saved ? 'post-card__action-btn--saved' : ''}`}
-                    onClick={() => setSaved(!saved)}
+                    onClick={handleSaveToggle}
                 >
                     <svg className="w-6 h-6" fill={saved ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
@@ -302,24 +354,6 @@ export default function PostCard({ post, onUpdate }) {
             <time className="post-card__time">{timeAgo}</time>
 
             <style jsx>{`
-                .post-card__menu-btn {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 32px;
-                    height: 32px;
-                    background: none;
-                    border: none;
-                    color: var(--text-primary);
-                    cursor: pointer;
-                    border-radius: var(--radius-full);
-                    transition: var(--transition-fast);
-                }
-                
-                .post-card__menu-btn:hover {
-                    background: var(--bg-tertiary);
-                }
-                
                 .post-card__actions-left {
                     display: flex;
                     gap: 12px;

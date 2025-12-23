@@ -15,19 +15,9 @@ const Card = ({ imgCard, titCard, contentCard, contentButton }) => {
       {/* Content section */}
       <div className="flex-grow">
         <h3 className="text-2xl font-playfair font-bold text-white mb-4 group-hover:text-primary transition-colors">{titCard}</h3>
-        <p className="text-gray-400 font-inter leading-relaxed mb-6 group-hover:text-gray-300 transition-colors">
+        <p className="text-gray-400 font-inter leading-relaxed group-hover:text-gray-300 transition-colors">
           {contentCard}
         </p>
-      </div>
-
-      {/* Button section */}
-      <div className="mt-auto pt-4 border-t border-white/10">
-        <button className="flex items-center text-sm font-bold text-primary tracking-wider uppercase group-hover:text-white transition-colors">
-          {contentButton || 'Ver Más'}
-          <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </button>
       </div>
     </div>
   );

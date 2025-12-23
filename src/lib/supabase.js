@@ -439,6 +439,49 @@ export const db = {
             .or(`username.ilike.%${query}%,display_name.ilike.%${query}%`)
             .limit(20);
         return { data, error };
+    },
+
+    // Saved Posts
+    savePost: async (userId, postId) => {
+        const { data, error } = await supabase
+            .from('saved_posts')
+            .insert({ user_id: userId, post_id: postId })
+            .select()
+            .single();
+        return { data, error };
+    },
+
+    unsavePost: async (userId, postId) => {
+        const { error } = await supabase
+            .from('saved_posts')
+            .delete()
+            .match({ user_id: userId, post_id: postId });
+        return { error };
+    },
+
+    getSavedPosts: async (userId) => {
+        const { data, error } = await supabase
+            .from('saved_posts')
+            .select(`
+                post:posts (
+                    *,
+                    profiles:user_id (id, username, display_name, avatar_url),
+                    reactions (id, user_id, reaction_type),
+                    comments (id)
+                )
+            `)
+            .eq('user_id', userId)
+            .order('created_at', { ascending: false });
+        return { data: data?.map(s => s.post), error };
+    },
+
+    checkIfPostSaved: async (userId, postId) => {
+        const { data, error } = await supabase
+            .from('saved_posts')
+            .select('id')
+            .match({ user_id: userId, post_id: postId })
+            .single();
+        return { isSaved: !!data, error };
     }
 };
 
