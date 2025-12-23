@@ -60,38 +60,70 @@ export const auth = {
 
 // Storage helpers
 export const storage = {
-    uploadAvatar: async (userId, file) => {
-        const fileExt = file.name.split('.').pop();
-        const fileName = `${userId}/avatar.${fileExt}`;
+    uploadPostImage: async (userId, file) => {
+        try {
+            console.log('📦 Storage: Starting upload', { userId, fileName: file.name, fileSize: file.size });
 
-        const { error } = await supabase.storage
-            .from('avatars')
-            .upload(fileName, file, { upsert: true });
+            // Simple filename with timestamp
+            const timestamp = Date.now();
+            const fileExt = file.name.split('.').pop();
+            const fileName = `${timestamp}.${fileExt}`;
+            const filePath = `${userId}/${fileName}`;
 
-        if (error) return { url: null, error };
+            console.log('📦 Storage: Uploading to path:', filePath);
 
-        const { data: { publicUrl } } = supabase.storage
-            .from('avatars')
-            .getPublicUrl(fileName);
+            // Upload to bucket 'posts'
+            const { data, error } = await supabase.storage
+                .from('posts')
+                .upload(filePath, file, {
+                    cacheControl: '3600',
+                    upsert: false
+                });
 
-        return { url: publicUrl, error: null };
+            if (error) {
+                console.error('❌ Storage upload error:', error);
+                return { url: null, error };
+            }
+
+            console.log('✅ Storage: Upload successful', data);
+
+            // Get public URL
+            const { data: urlData } = supabase.storage
+                .from('posts')
+                .getPublicUrl(filePath);
+
+            console.log('✅ Storage: Public URL generated:', urlData.publicUrl);
+
+            return { url: urlData.publicUrl, error: null };
+        } catch (error) {
+            console.error('❌ Storage exception:', error);
+            return { url: null, error };
+        }
     },
 
-    uploadPostImage: async (userId, file) => {
-        const fileExt = file.name.split('.').pop();
-        const fileName = `${userId}/${Date.now()}.${fileExt}`;
+    uploadAvatarImage: async (userId, file) => {
+        try {
+            const fileExt = file.name.split('.').pop();
+            const fileName = `${userId}.${fileExt}`;
+            const filePath = fileName;
 
-        const { error } = await supabase.storage
-            .from('posts')
-            .upload(fileName, file);
+            const { data, error } = await supabase.storage
+                .from('avatars')
+                .upload(filePath, file, {
+                    cacheControl: '3600',
+                    upsert: true
+                });
 
-        if (error) return { url: null, error };
+            if (error) return { url: null, error };
 
-        const { data: { publicUrl } } = supabase.storage
-            .from('posts')
-            .getPublicUrl(fileName);
+            const { data: urlData } = supabase.storage
+                .from('avatars')
+                .getPublicUrl(filePath);
 
-        return { url: publicUrl, error: null };
+            return { url: urlData.publicUrl, error: null };
+        } catch (error) {
+            return { url: null, error };
+        }
     },
 
     deleteImage: async (bucket, path) => {
