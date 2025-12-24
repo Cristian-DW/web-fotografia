@@ -8,7 +8,7 @@ const Footer = () => {
       <>
          <footer>
             <div>
-               <p>© 2023. All rights reserved.</p>
+               <p>© {new Date().getFullYear()}. All rights reserved.</p>
             </div>
          </footer>
       </>

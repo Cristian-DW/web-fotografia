@@ -281,7 +281,7 @@ export default function Landing() {
 
         {/* Footer */}
         <footer className="landing__footer">
-          <p>© 2024 Lumina. Tu espacio para brillar.</p>
+          <p>© {new Date().getFullYear()} Lumina. Tu espacio para brillar.</p>
         </footer>
       </div>
 

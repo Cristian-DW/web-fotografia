@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuthStore } from '../stores/authStore';
 import { db } from '../lib/supabase';
 import Avatar from '../components/shared/Avatar';
 import Button from '../components/shared/Button';
+import FollowListModal from '../components/shared/FollowListModal';
 import { PageLoader } from '../components/shared/Loader';
 import toast from 'react-hot-toast';
 
@@ -25,6 +26,10 @@ export default function Profile() {
         website: ''
     });
     const [activeTab, setActiveTab] = useState('posts'); // posts | saved
+    const [showFollowersModal, setShowFollowersModal] = useState(false);
+    const [showFollowingModal, setShowFollowingModal] = useState(false);
+    const [followers, setFollowers] = useState([]);
+    const [following, setFollowing] = useState([]);
 
     const isOwnProfile = user && profile && user.id === profile.id;
 
@@ -74,10 +79,12 @@ export default function Profile() {
 
     const loadFollowerCounts = async (userId) => {
         try {
-            const { data: followers } = await db.getFollowers(userId);
-            const { data: following } = await db.getFollowing(userId);
-            setFollowerCount((followers || []).length);
-            setFollowingCount((following || []).length);
+            const { data: followersData } = await db.getFollowers(userId);
+            const { data: followingData } = await db.getFollowing(userId);
+            setFollowers(followersData || []);
+            setFollowing(followingData || []);
+            setFollowerCount((followersData || []).length);
+            setFollowingCount((followingData || []).length);
         } catch (error) {
             console.error('Error loading follower counts:', error);
         }
@@ -128,6 +135,14 @@ export default function Profile() {
             console.error('Error updating profile:', error);
             toast.error('Error al actualizar perfil');
         }
+    };
+
+    const handleOpenFollowersModal = () => {
+        setShowFollowersModal(true);
+    };
+
+    const handleOpenFollowingModal = () => {
+        setShowFollowingModal(true);
     };
 
     if (loading) {
@@ -183,11 +198,11 @@ export default function Profile() {
                             <strong>{posts.length}</strong>
                             <span>publicaciones</span>
                         </div>
-                        <button className="profile-stat">
+                        <button className="profile-stat" onClick={handleOpenFollowersModal}>
                             <strong>{followerCount}</strong>
                             <span>seguidores</span>
                         </button>
-                        <button className="profile-stat">
+                        <button className="profile-stat" onClick={handleOpenFollowingModal}>
                             <strong>{followingCount}</strong>
                             <span>siguiendo</span>
                         </button>
@@ -273,7 +288,11 @@ export default function Profile() {
                     </div>
                 ) : (
                     posts.map((post) => (
-                        <div key={post.id} className="profile-grid-item">
+                        <Link
+                            key={post.id}
+                            to={`/feed?post=${post.id}`}
+                            className="profile-grid-item"
+                        >
                             <img src={post.image_url} alt={post.caption || 'Post'} />
                             <div className="profile-grid-overlay">
                                 <div className="profile-grid-stat">
@@ -289,10 +308,27 @@ export default function Profile() {
                                     <span>{post.comments?.length || 0}</span>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 )}
             </div>
+
+            {/* Modals */}
+            <FollowListModal
+                isOpen={showFollowersModal}
+                onClose={() => setShowFollowersModal(false)}
+                title="Seguidores"
+                users={followers}
+                currentUserId={user?.id}
+            />
+
+            <FollowListModal
+                isOpen={showFollowingModal}
+                onClose={() => setShowFollowingModal(false)}
+                title="Siguiendo"
+                users={following}
+                currentUserId={user?.id}
+            />
 
             <style jsx>{`
                 .profile-page {
@@ -457,6 +493,8 @@ export default function Profile() {
                     overflow: hidden;
                     background: var(--bg-tertiary);
                     cursor: pointer;
+                    text-decoration: none;
+                    display: block;
                 }
 
                 .profile-grid-item img {

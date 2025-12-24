@@ -117,15 +117,10 @@ export default function Home() {
 
                     <div className="home-sidebar__footer">
                         <nav className="footer-links">
-                            <a href="#">Información</a>
-                            <a href="#">Ayuda</a>
-                            <a href="#">Prensa</a>
-                            <a href="#">API</a>
-                            <a href="#">Empleo</a>
-                            <a href="#">Privacidad</a>
-                            <a href="#">Condiciones</a>
+                            <a href="#privacy">Privacidad</a>
+                            <a href="#terms">Condiciones</a>
                         </nav>
-                        <p className="copyright">© 2024 LUMINA</p>
+                        <p className="copyright">© {new Date().getFullYear()} LUMINA</p>
                     </div>
                 </aside>
             )}
