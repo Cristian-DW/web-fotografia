@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../stores/authStore';
 import { useUIStore } from '../../stores/uiStore';
 import Avatar from '../shared/Avatar';
@@ -10,6 +10,7 @@ export default function Navbar() {
     const [searchQuery, setSearchQuery] = useState('');
     const [showUserMenu, setShowUserMenu] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
 
     const handleLogout = async () => {
         await signOut();
@@ -31,9 +32,16 @@ export default function Navbar() {
                     </svg>
                     <input
                         type="text"
-                        placeholder="Buscar usuarios..."
+                        placeholder="Buscar usuarios y publicaciones..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                if (searchQuery.trim()) {
+                                    navigate(`/explore?q=${encodeURIComponent(searchQuery.trim())}`);
+                                }
+                            }
+                        }}
                         className="navbar__search-input"
                     />
                 </div>

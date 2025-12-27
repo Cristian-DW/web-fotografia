@@ -441,6 +441,20 @@ export const db = {
         return { data, error };
     },
 
+    searchPosts: async (query) => {
+        const { data, error } = await supabase
+            .from('posts')
+            .select(`
+                *,
+                profiles:user_id (id, username, display_name, avatar_url),
+                reactions (id, user_id, reaction_type),
+                comments (id)
+            `)
+            .ilike('caption', `%${query}%`)
+            .limit(20);
+        return { data, error };
+    },
+
     // Saved Posts
     savePost: async (userId, postId) => {
         const { data, error } = await supabase

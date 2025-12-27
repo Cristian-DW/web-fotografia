@@ -65,12 +65,23 @@ function App() {
 
     // Get initial session
     const getInitialSession = async () => {
+      // Safety timeout to prevent infinite loading
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Session check timeout')), 5000)
+      );
+
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        const sessionSearch = async () => {
+          const { data: { session } } = await supabase.auth.getSession();
+          return session;
+        };
+
+        const session = await Promise.race([sessionSearch(), timeoutPromise]);
         console.log('📋 Initial session:', session ? 'Found' : 'None');
 
         if (session?.user) {
           setUser(session.user);
+          // fetchOrCreateProfile handles its own timeout now
           const profile = await fetchOrCreateProfile(session.user);
           setProfile(profile);
         }

@@ -105,20 +105,26 @@ export default function Profile() {
             return;
         }
 
+        // Optimistic update
+        const previousIsFollowing = isFollowing;
+        const previousFollowerCount = followerCount;
+
+        setIsFollowing(!previousIsFollowing);
+        setFollowerCount(prev => previousIsFollowing ? prev - 1 : prev + 1);
+
         try {
-            if (isFollowing) {
+            if (previousIsFollowing) {
                 await db.unfollowUser(user.id, profile.id);
-                setIsFollowing(false);
-                setFollowerCount(prev => prev - 1);
                 toast.success('Dejaste de seguir');
             } else {
                 await db.followUser(user.id, profile.id);
-                setIsFollowing(true);
-                setFollowerCount(prev => prev + 1);
                 toast.success('Ahora sigues a este usuario');
             }
         } catch (error) {
             console.error('Error toggling follow:', error);
+            // Revert changes
+            setIsFollowing(previousIsFollowing);
+            setFollowerCount(previousFollowerCount);
             toast.error('Error al seguir/dejar de seguir');
         }
     };
