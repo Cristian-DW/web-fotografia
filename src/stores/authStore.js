@@ -68,8 +68,7 @@ export const useAuthStore = create((set, get) => ({
             const username = metadata.username || metadata.name?.replace(/\s+/g, '_').toLowerCase() || `user_${user.id.slice(0, 8)}`;
             const displayName = metadata.display_name || metadata.full_name || metadata.name || username;
 
-            // Add timeout for profile creation
-            const createProfilePromise = supabase
+            const { data: newProfile, error: createError } = await supabase
                 .from('profiles')
                 .upsert({
                     id: user.id,
@@ -81,13 +80,6 @@ export const useAuthStore = create((set, get) => ({
                 }, { onConflict: 'id' })
                 .select()
                 .single();
-                
-            const timeoutPromise = new Promise((_, reject) => 
-                setTimeout(() => reject(new Error('Profile creation timeout')), 10000)
-            );
-            
-            const result = await Promise.race([createProfilePromise, timeoutPromise]);
-            const { data: newProfile, error: createError } = result;
 
             if (createError) {
                 console.error('❌ Error creating profile:', createError);
@@ -180,6 +172,11 @@ export const useAuthStore = create((set, get) => ({
         set({ loading: true });
         try {
             const { error } = await auth.signOut();
+            // Aggressively clear local storage to prevent stuck sessions
+            localStorage.clear();
+            // Or specifically: localStorage.removeItem('sb-<your-project-id>-auth-token');
+            // But clear() is safer given the user complaint.
+
             if (!error) {
                 set({ user: null, profile: null, loading: false });
             } else {

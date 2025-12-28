@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useAuthStore } from '../stores/authStore';
 import { useUIStore } from '../stores/uiStore';
-import { db } from '../lib/supabase';
+import { db, realtime } from '../lib/supabase';
 import PostCard from '../components/feed/PostCard';
 import SuggestedUsers from '../components/social/SuggestedUsers';
 import { PageLoader } from '../components/shared/Loader';
@@ -42,6 +42,26 @@ export default function Home() {
 
     useEffect(() => {
         fetchPosts();
+
+        // Subscribe to new posts
+        const subscription = realtime.subscribeToFeed(async (payload) => {
+            console.log('🔔 New post received:', payload);
+            if (payload.new) {
+                // We need to fetch the full post data including profile
+                const { data: newPost } = await db.getPosts(1, 0); // Hacky: just re-fetch latest or fetch specific by ID if available
+                // Better approach: fetch specifically the new post ID if we could, 
+                // but getPosts returns a list.
+                // Let's rely on the fact that getPosts(1,0) should return the latest one which matches payload.new.id
+
+                // Ideally, we should fetch by ID. Let's assume getPosts returns array.
+                // Or better, let's just re-fetch the first page to be safe and simple
+                fetchPosts(0);
+            }
+        });
+
+        return () => {
+            realtime.unsubscribe(subscription);
+        };
     }, []);
 
     // Infinite scroll

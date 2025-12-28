@@ -63,60 +63,53 @@ function App() {
   useEffect(() => {
     console.log('🚀 App mounting, setting up auth...');
 
-    // Get initial session
-    const getInitialSession = async () => {
-      // Safety timeout to prevent infinite loading
-      const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error('Session check timeout')), 5000)
-      );
+    let mounted = true;
 
+    async function handleSession(session) {
       try {
-        const sessionSearch = async () => {
-          const { data: { session } } = await supabase.auth.getSession();
-          return session;
-        };
-
-        const session = await Promise.race([sessionSearch(), timeoutPromise]);
-        console.log('📋 Initial session:', session ? 'Found' : 'None');
-
         if (session?.user) {
-          setUser(session.user);
-          // fetchOrCreateProfile handles its own timeout now
-          const profile = await fetchOrCreateProfile(session.user);
-          setProfile(profile);
+          // Only fetch profile if not already loaded or different user
+          const currentUser = useAuthStore.getState().user;
+          if (!currentUser || currentUser.id !== session.user.id) {
+            setUser(session.user);
+            const profile = await fetchOrCreateProfile(session.user);
+            if (mounted) setProfile(profile);
+          }
+        } else if (!session) {
+          if (mounted) {
+            setUser(null);
+            setProfile(null);
+          }
         }
       } catch (error) {
-        console.error('❌ Error getting session:', error);
+        console.error('❌ Error handling session:', error);
       } finally {
-        setLoading(false);
+        if (mounted) setLoading(false);
       }
-    };
+    }
 
-    getInitialSession();
+    // Check initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log('📋 Initial session:', session ? 'Found' : 'None');
+      if (mounted) handleSession(session);
+    });
 
-    // Listen for auth changes
+    // Listen for changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('🔔 Auth event:', event);
-
-      try {
-        if (event === 'SIGNED_IN' && session?.user) {
-          setUser(session.user);
-          const profile = await fetchOrCreateProfile(session.user);
-          setProfile(profile);
-        } else if (event === 'SIGNED_OUT') {
+      if (mounted) {
+        if (event === 'SIGNED_OUT') {
           setUser(null);
           setProfile(null);
-        } else if (event === 'TOKEN_REFRESHED' && session?.user) {
-          setUser(session.user);
+          setLoading(false);
+        } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+          handleSession(session);
         }
-      } catch (error) {
-        console.error('❌ Error handling auth event:', error);
-      } finally {
-        setLoading(false);
       }
     });
 
     return () => {
+      mounted = false;
       subscription?.unsubscribe();
     };
   }, []); // Empty deps - only run once on mount

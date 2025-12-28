@@ -100,9 +100,6 @@ export default function CreatePost() {
       console.log('✅ Post created successfully');
       toast.success('¡Publicación creada!');
       handleClose();
-
-      // Reload page to show new post
-      setTimeout(() => window.location.reload(), 500);
     } catch (error) {
       console.error('❌ Error creating post:', error);
       console.error('Error details:', {
