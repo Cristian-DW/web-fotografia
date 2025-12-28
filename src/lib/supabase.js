@@ -58,6 +58,19 @@ export const auth = {
     }
 };
 
+// Error handling helper
+export const handleAuthError = (error) => {
+    // Detect expired session or invalid token errors
+    if (error?.status === 401 ||
+        error?.message?.includes('Invalid token') ||
+        error?.message?.includes('JWT expired') ||
+        error?.message?.includes('refresh_token_not_found')) {
+        console.warn('⚠️ Auth error detected:', error.message);
+        return true; // Indicates expired/invalid session
+    }
+    return false;
+};
+
 // Storage helpers
 export const storage = {
     uploadPostImage: async (userId, file) => {
@@ -107,7 +120,7 @@ export const storage = {
             const fileName = `${userId}.${fileExt}`;
             const filePath = fileName;
 
-            const { data, error } = await supabase.storage
+            const { error } = await supabase.storage
                 .from('avatars')
                 .upload(filePath, file, {
                     cacheControl: '3600',

@@ -26,8 +26,13 @@ export default function RegisterForm() {
             newErrors.email = 'Email inválido';
         }
 
-        if (formData.password.length < 6) {
-            newErrors.password = 'Mínimo 6 caracteres';
+        // Enhanced password validation
+        if (formData.password.length < 8) {
+            newErrors.password = 'Mínimo 8 caracteres';
+        } else if (!/\d/.test(formData.password)) {
+            newErrors.password = 'Debe contener al menos un número';
+        } else if (!/[A-Z]/.test(formData.password)) {
+            newErrors.password = 'Debe contener al menos una mayúscula';
         }
 
         if (formData.password !== formData.confirmPassword) {
@@ -138,6 +143,11 @@ export default function RegisterForm() {
                             required
                         />
                         {errors.password && <span className="form-error-text">{errors.password}</span>}
+                        {!errors.password && (
+                            <span className="form-helper-text" style={{ fontSize: '0.75rem', color: '#888', marginTop: '4px', display: 'block' }}>
+                                Mínimo 8 caracteres, incluye números y mayúsculas
+                            </span>
+                        )}
                     </div>
 
                     <div className="form-group">

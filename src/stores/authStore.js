@@ -213,6 +213,24 @@ export const useAuthStore = create((set, get) => ({
         set({ profile });
     },
 
+    // Check if session is still valid
+    checkSessionValidity: async () => {
+        try {
+            const { session, error } = await auth.getSession();
+            if (error || !session) {
+                console.warn('⚠️ Session invalid or expired');
+                // Clear user state
+                set({ user: null, profile: null });
+                return false;
+            }
+            return true;
+        } catch (error) {
+            console.error('❌ Error checking session:', error);
+            set({ user: null, profile: null });
+            return false;
+        }
+    },
+
     // Set user and profile
     setUser: (user) => set({ user }),
     setProfile: (profile) => set({ profile }),

@@ -24,6 +24,7 @@ import Settings from './pages/Settings';
 // Components
 import { PageLoader } from './components/shared/Loader';
 import CreatePost from './components/feed/CreatePost';
+import SessionGuard from './components/auth/SessionGuard';
 
 // Layout wrapper for authenticated pages
 function AuthenticatedLayout({ children }) {
@@ -34,7 +35,7 @@ function AuthenticatedLayout({ children }) {
   }
 
   return (
-    <>
+    <SessionGuard>
       <Navbar />
       <Sidebar />
       <main className="main-content">
@@ -42,7 +43,7 @@ function AuthenticatedLayout({ children }) {
       </main>
       <BottomNav />
       <CreatePost />
-    </>
+    </SessionGuard>
   );
 }
 
@@ -102,8 +103,23 @@ function App() {
           setUser(null);
           setProfile(null);
           setLoading(false);
+          // Clear localStorage to prevent stuck sessions
+          localStorage.clear();
         } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
           handleSession(session);
+        } else if (event === 'USER_UPDATED') {
+          // Handle user updates
+          if (session?.user) {
+            handleSession(session);
+          }
+        }
+
+        // Detect session expiration or token errors
+        if (!session && event !== 'SIGNED_OUT' && event !== 'INITIAL_SESSION') {
+          console.warn('⚠️ Session lost, possible expiration');
+          setUser(null);
+          setProfile(null);
+          setLoading(false);
         }
       }
     });
@@ -112,6 +128,7 @@ function App() {
       mounted = false;
       subscription?.unsubscribe();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Empty deps - only run once on mount
 
   if (loading) {
