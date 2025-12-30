@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useAuthStore } from '../stores/authStore';
 import { useUIStore } from '../stores/uiStore';
+import { storage } from '../lib/supabase';
 import Avatar from '../components/shared/Avatar';
 import Button from '../components/shared/Button';
 import toast from 'react-hot-toast';
@@ -9,6 +10,9 @@ export default function Settings() {
     const { user, profile, updateProfile, signOut } = useAuthStore();
     const { openAuthModal } = useUIStore();
     const [loading, setLoading] = useState(false);
+    const [uploadingAvatar, setUploadingAvatar] = useState(false);
+    const [avatarPreview, setAvatarPreview] = useState(null);
+    const fileInputRef = useRef(null);
     const [formData, setFormData] = useState({
         display_name: profile?.display_name || '',
         username: profile?.username || '',
@@ -63,6 +67,62 @@ export default function Settings() {
         toast.success('Sesión cerrada');
     };
 
+    const handleAvatarClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleAvatarChange = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        // Validate file type
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+        if (!validTypes.includes(file.type)) {
+            toast.error('Por favor selecciona una imagen válida (JPG, PNG, WEBP)');
+            return;
+        }
+
+        // Validate file size (max 5MB)
+        const maxSize = 5 * 1024 * 1024; // 5MB
+        if (file.size > maxSize) {
+            toast.error('La imagen debe ser menor a 5MB');
+            return;
+        }
+
+        // Show preview
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setAvatarPreview(reader.result);
+        };
+        reader.readAsDataURL(file);
+
+        // Upload avatar
+        setUploadingAvatar(true);
+        try {
+            const { url, error } = await storage.uploadAvatarImage(user.id, file);
+
+            if (error) {
+                throw error;
+            }
+
+            // Update profile with new avatar
+            const { success, error: updateError } = await updateProfile({ avatar_url: url });
+
+            if (success) {
+                toast.success('Foto de perfil actualizada');
+                setAvatarPreview(null);
+            } else {
+                throw updateError;
+            }
+        } catch (error) {
+            console.error('Error uploading avatar:', error);
+            toast.error('Error al subir la foto');
+            setAvatarPreview(null);
+        } finally {
+            setUploadingAvatar(false);
+        }
+    };
+
     return (
         <div className="container">
             <div className="settings">
@@ -75,13 +135,31 @@ export default function Settings() {
                     <form onSubmit={handleSubmit} className="settings-form">
                         <div className="settings-form__avatar">
                             <Avatar
-                                src={profile?.avatar_url}
+                                src={avatarPreview || profile?.avatar_url}
                                 alt={profile?.display_name || profile?.username}
                                 size="xl"
                             />
-                            <Button variant="secondary" size="sm">
-                                Cambiar foto
-                            </Button>
+                            <div>
+                                <input
+                                    ref={fileInputRef}
+                                    type="file"
+                                    accept="image/jpeg,image/jpg,image/png,image/webp"
+                                    onChange={handleAvatarChange}
+                                    style={{ display: 'none' }}
+                                />
+                                <Button
+                                    variant="secondary"
+                                    size="sm"
+                                    onClick={handleAvatarClick}
+                                    loading={uploadingAvatar}
+                                    type="button"
+                                >
+                                    {uploadingAvatar ? 'Subiendo...' : 'Cambiar foto'}
+                                </Button>
+                                <p style={{ fontSize: '0.75rem', color: '#888', marginTop: '8px' }}>
+                                    JPG, PNG o WEBP. Máximo 5MB.
+                                </p>
+                            </div>
                         </div>
 
                         <div className="form-group">
